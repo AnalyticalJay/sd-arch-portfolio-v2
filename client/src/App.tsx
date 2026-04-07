@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Work from "./pages/Work";
 import ProjectDetail from "./pages/ProjectDetail";
 import About from "./pages/About";
+import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 
 function TransitionOverlay() {
@@ -29,6 +30,7 @@ function Router() {
       <Route path={"/work"} component={Work} />
       <Route path={"/project/:id"} component={ProjectDetail} />
       <Route path={"/about"} component={About} />
+      <Route path={"/services"} component={Services} />
       <Route path={"/contact"} component={Contact} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
