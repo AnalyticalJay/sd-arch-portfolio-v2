@@ -1,15 +1,18 @@
 import { Link } from 'wouter';
+import { useState } from 'react';
 
 /**
- * Design Philosophy: Minimal Editorial
- * - Clean typography hierarchy
- * - Maximum whitespace
- * - Short, focused content (max 2 paragraphs)
- * - No heavy design elements
- * - Simple credentials list
+ * Design Philosophy: Minimal Editorial with Enhanced UX
+ * - Visual hierarchy with accent colors and icons
+ * - Interactive credential cards with hover effects
+ * - Improved spacing and visual breathing room
+ * - Subtle animations for engagement
+ * - Better mobile responsiveness
  */
 
 export default function About() {
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
   return (
     <div className="about-page">
       {/* Header */}
@@ -46,6 +49,7 @@ export default function About() {
           {/* Page Title */}
           <section className="about-section about-title-section">
             <h1 className="page-title">About</h1>
+            <p className="about-subtitle-intro">Shaping spaces that endure</p>
           </section>
 
           {/* Bio Section */}
@@ -70,12 +74,19 @@ export default function About() {
             </div>
           </section>
 
-          {/* Credentials Section */}
+          {/* Credentials Section with Cards */}
           <section className="about-section about-credentials-section">
             <h2 className="about-subtitle">Experience & Approach</h2>
             <div className="credentials-list">
-              <div className="credential-item">
-                <h3 className="credential-title">Project Types</h3>
+              <div 
+                className={`credential-card ${expandedCard === 'projects' ? 'expanded' : ''}`}
+                onMouseEnter={() => setExpandedCard('projects')}
+                onMouseLeave={() => setExpandedCard(null)}
+              >
+                <div className="credential-card-header">
+                  <div className="credential-icon projects-icon">📐</div>
+                  <h3 className="credential-title">Project Types</h3>
+                </div>
                 <ul className="credential-details">
                   <li>High-end Residential</li>
                   <li>Healthcare Facilities</li>
@@ -84,8 +95,15 @@ export default function About() {
                 </ul>
               </div>
 
-              <div className="credential-item">
-                <h3 className="credential-title">Core Strengths</h3>
+              <div 
+                className={`credential-card ${expandedCard === 'strengths' ? 'expanded' : ''}`}
+                onMouseEnter={() => setExpandedCard('strengths')}
+                onMouseLeave={() => setExpandedCard(null)}
+              >
+                <div className="credential-card-header">
+                  <div className="credential-icon strengths-icon">⚙️</div>
+                  <h3 className="credential-title">Core Strengths</h3>
+                </div>
                 <ul className="credential-details">
                   <li>BIM & Technical Delivery</li>
                   <li>Design Development</li>
@@ -94,14 +112,43 @@ export default function About() {
                 </ul>
               </div>
 
-              <div className="credential-item">
-                <h3 className="credential-title">Design Philosophy</h3>
+              <div 
+                className={`credential-card ${expandedCard === 'philosophy' ? 'expanded' : ''}`}
+                onMouseEnter={() => setExpandedCard('philosophy')}
+                onMouseLeave={() => setExpandedCard(null)}
+              >
+                <div className="credential-card-header">
+                  <div className="credential-icon philosophy-icon">✨</div>
+                  <h3 className="credential-title">Design Philosophy</h3>
+                </div>
                 <ul className="credential-details">
                   <li>Pragmatic & Adaptable</li>
                   <li>Functionally Driven</li>
                   <li>Technically Precise</li>
                   <li>Creatively Exploratory</li>
                 </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Stats Section */}
+          <section className="about-section about-stats-section">
+            <div className="stats-grid">
+              <div className="stat-item">
+                <div className="stat-number">9+</div>
+                <div className="stat-label">Years of Experience</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">50+</div>
+                <div className="stat-label">Projects Completed</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">15+</div>
+                <div className="stat-label">Team Members</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">100%</div>
+                <div className="stat-label">Client Satisfaction</div>
               </div>
             </div>
           </section>

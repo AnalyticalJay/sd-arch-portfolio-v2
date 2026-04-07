@@ -926,6 +926,160 @@ a {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== ENHANCED ABOUT PAGE STYLES ===== */
+
+.about-subtitle-intro {
+  font-size: 16px;
+  font-weight: 300;
+  color: #203B8C;
+  text-align: center;
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Credential Cards */
+.credential-card {
+  padding: 40px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.credential-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #203B8C;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.credential-card:hover,
+.credential-card.expanded {
+  background: white;
+  border-color: #e0e0e0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.credential-card:hover::before,
+.credential-card.expanded::before {
+  transform: scaleX(1);
+}
+
+.credential-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.credential-icon {
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(32, 59, 140, 0.08);
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.credential-card:hover .credential-icon,
+.credential-card.expanded .credential-icon {
+  background: rgba(32, 59, 140, 0.15);
+  transform: scale(1.1);
+}
+
+.credential-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #0D0D0D;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  flex: 1;
+}
+
+.credential-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.credential-details li {
+  font-size: 14px;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+}
+
+.credential-details li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #203B8C;
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.credential-card:hover .credential-details li::before,
+.credential-card.expanded .credential-details li::before {
+  opacity: 1;
+}
+
+/* Stats Section */
+.about-stats-section {
+  padding: 120px 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 60px;
+}
+
+.stat-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: 300;
+  color: #203B8C;
+  letter-spacing: -1px;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 300;
+  color: #555;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .page-footer {
   background: white;
   border-top: 1px solid #e5e5e5;
@@ -980,6 +1134,14 @@ a {
 
   .credentials-list {
     gap: 60px;
+  }
+
+  .stats-grid {
+    gap: 40px;
+  }
+
+  .stat-number {
+    font-size: 40px;
   }
 
   .footer-container {
@@ -1037,6 +1199,33 @@ a {
   .credentials-list {
     grid-template-columns: 1fr;
     gap: 50px;
+  }
+
+  .credential-card {
+    padding: 32px;
+  }
+
+  .credential-card-header {
+    gap: 12px;
+  }
+
+  .credential-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .about-stats-section {
+    padding: 80px 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .stat-number {
+    font-size: 32px;
   }
 
   .about-cta-section {
