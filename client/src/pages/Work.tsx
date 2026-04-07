@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { Link } from 'wouter';
 
 export default function Work() {
+  const [activeFilter, setActiveFilter] = useState('All');
+
   const projects = [
     {
       id: 1,
@@ -8,6 +11,7 @@ export default function Work() {
       location: 'Cape Town',
       year: '2021',
       type: 'Commercial',
+      category: 'Commercial',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/truworths-plain-park_9ba4f43a.png',
     },
     {
@@ -16,6 +20,7 @@ export default function Work() {
       location: 'Cape Town',
       year: '2021',
       type: 'Residential',
+      category: 'Residential',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-mixed-use_653a2380.png',
     },
     {
@@ -24,6 +29,7 @@ export default function Work() {
       location: 'Cape Town',
       year: '2020',
       type: 'Commercial',
+      category: 'Commercial',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-domestic-terminal_f9ad9230.png',
     },
     {
@@ -32,6 +38,7 @@ export default function Work() {
       location: 'Cape Town',
       year: '2022',
       type: 'Private Residence',
+      category: 'Residential',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-apartments_3621efbe.png',
     },
     {
@@ -40,9 +47,16 @@ export default function Work() {
       location: 'Cape Town',
       year: '2023',
       type: 'Residential',
+      category: 'Residential',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-social-housing_3a8a1cf6.png',
     },
   ];
+
+  const categories = ['All', 'Commercial', 'Residential'];
+
+  const filteredProjects = activeFilter === 'All' 
+    ? projects 
+    : projects.filter(project => project.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-white">
@@ -74,10 +88,31 @@ export default function Work() {
       {/* Page Header */}
       <section className="section-spacing bg-white">
         <div className="container">
-          <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6">Our Work</h1>
+          <h1 className="page-title mb-6">Our Work</h1>
           <p className="text-lg font-light text-gray-600 max-w-2xl">
-            A selection of projects spanning residential, commercial, healthcare, and mixed-use developments. Each represents our commitment to thoughtful design and technical excellence.
+            A selection of projects spanning residential and commercial developments. Each represents our commitment to thoughtful design and technical excellence.
           </p>
+        </div>
+      </section>
+
+      {/* Filter Section */}
+      <section className="bg-white py-12 border-b border-gray-200">
+        <div className="container">
+          <div className="flex gap-6 justify-center">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                className={`text-sm font-light tracking-wide transition-all pb-2 ${
+                  activeFilter === category
+                    ? 'text-blue-900 border-b-2 border-blue-900'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -85,7 +120,7 @@ export default function Work() {
       <section className="section-spacing bg-white">
         <div className="container">
           <div className="project-grid">
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <Link key={project.id} href={`/project/${project.id}`} className="project-card group">
                   <div className="relative overflow-hidden h-96">
                     <img
