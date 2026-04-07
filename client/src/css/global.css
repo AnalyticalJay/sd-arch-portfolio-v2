@@ -4,13 +4,18 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background: #FFFFFF;
   color: #0D0D0D;
+  line-height: 1.6;
 }
 
-/* Typography */
+/* ===== TYPOGRAPHY ===== */
 
 h1 {
   font-size: 48px;
@@ -23,6 +28,11 @@ h2 {
   font-weight: 300;
 }
 
+h3 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
 p {
   font-size: 15px;
   font-weight: 300;
@@ -30,166 +40,531 @@ p {
   color: #555;
 }
 
-/* Layout */
+/* ===== HERO SECTION ===== */
 
-.container {
-  max-width: 1300px;
-  margin: auto;
-  padding: 0 40px;
-}
-
-.section {
-  padding: 100px 0;
-}
-
-/* Hero */
-
-.hero {
+.hero-section {
+  position: relative;
+  width: 100%;
   height: 100vh;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.hero-content {
-  text-align: center;
-  color: white;
-}
-
-/* Grid */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-/* Projects */
-
-.project {
-  position: relative;
   overflow: hidden;
 }
 
-.project img {
-  width: 100%;
-  display: block;
-}
-
-.overlay {
+/* Subtle zoom animation on load */
+.hero-section::before {
+  content: '';
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: white;
+  inset: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  animation: heroZoom 8s ease-out forwards;
+  z-index: -1;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Fade-in animation */
+.hero-section {
   opacity: 0;
-  transition: 0.3s;
+  animation: heroFadeIn 1.2s ease-out forwards;
 }
 
-.project:hover .overlay {
-  opacity: 1;
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Project Page */
-
-.project-info {
-  text-align: center;
+/* Dark overlay for text readability */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 0;
 }
 
-.meta {
+/* ===== HERO NAVIGATION ===== */
+
+.hero-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav-logo:hover {
+  opacity: 0.8;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 48px;
+}
+
+.nav-link {
   font-size: 13px;
-  color: #888;
-  letter-spacing: 1px;
-  margin: 10px 0;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.project-gallery img {
-  width: 100%;
-  margin-bottom: 20px;
+.nav-link:hover {
+  color: white;
 }
 
-/* Links */
+/* ===== HERO CONTENT ===== */
 
-a {
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+  animation: contentFadeIn 1.5s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  font-size: 72px;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.05em;
+}
+
+/* ===== SCROLL INDICATOR ===== */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.scroll-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+/* ===== PROJECTS SECTION ===== */
+
+.projects-section {
+  background: white;
+  padding: 120px 0;
+}
+
+.projects-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-header {
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 300;
+  color: #0D0D0D;
+  margin-bottom: 16px;
+}
+
+.title-underline {
+  width: 60px;
+  height: 1px;
+  background: #203B8C;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 32px;
+}
+
+/* ===== PROJECT CARDS ===== */
+
+.project-link {
   text-decoration: none;
   color: inherit;
 }
 
-a:hover {
-  color: #203B8C;
-}
-
-/* Hover Effects */
-
 .project-card {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 1;
+  background: #f5f5f5;
+  cursor: pointer;
 }
 
-.project-card img {
-  transition: transform 0.5s ease-out;
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.project-card:hover img {
-  transform: scale(1.05);
+.project-card:hover .project-image {
+  transform: scale(1.08);
 }
 
 .project-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0);
-  transition: background-color 0.5s ease-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem;
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
+  transition: background-color 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
 }
 
 .project-card:hover .project-overlay {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.project-info {
+  position: absolute;
+  inset: 0;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+}
+
+.project-card:hover .project-info {
   opacity: 1;
 }
 
-.project-overlay h3 {
-  font-size: 1.875rem;
+.project-title {
+  font-size: 32px;
   font-weight: 300;
   color: white;
-  margin-bottom: 0.75rem;
+  margin-bottom: 12px;
   letter-spacing: -0.5px;
 }
 
-.project-overlay p {
-  font-size: 0.875rem;
-  color: #e5e7eb;
+.project-meta {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-/* Navigation */
+/* ===== PHILOSOPHY SECTION ===== */
 
-nav {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
+.philosophy-section {
+  background: #f9f9f9;
+  padding: 120px 0;
+  border-top: 1px solid #e5e5e5;
 }
 
-/* Responsive */
+.philosophy-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.philosophy-content {
+  max-width: 700px;
+}
+
+.philosophy-title {
+  font-size: 36px;
+  font-weight: 300;
+  color: #0D0D0D;
+  margin-bottom: 32px;
+}
+
+.philosophy-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+
+/* ===== CTA SECTION ===== */
+
+.cta-section {
+  background: white;
+  padding: 120px 0;
+  border-top: 1px solid #e5e5e5;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.cta-title {
+  font-size: 48px;
+  font-weight: 300;
+  color: #0D0D0D;
+  margin-bottom: 24px;
+}
+
+.cta-subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 16px 48px;
+  background: #203B8C;
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #162a66;
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+  background: white;
+  border-top: 1px solid #e5e5e5;
+  padding: 80px 0 40px;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-heading {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #0D0D0D;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.footer-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.8;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  font-size: 13px;
+  font-weight: 300;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #0D0D0D;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin-bottom: 40px;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  font-weight: 300;
+  color: #aaa;
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
 
 @media (max-width: 768px) {
-  .grid {
+  .hero-title {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .nav-container {
+    padding: 0 24px;
+    height: 64px;
+  }
+
+  .nav-menu {
+    gap: 24px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+  }
+
+  .projects-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  h1 {
-    font-size: 32px;
+  .section-title {
+    font-size: 36px;
   }
 
-  nav {
-    padding: 0 1rem;
+  .philosophy-title {
+    font-size: 28px;
   }
 
-  .project-overlay h3 {
-    font-size: 1.5rem;
+  .cta-title {
+    font-size: 36px;
+  }
+
+  .project-title {
+    font-size: 24px;
+  }
+
+  .footer-grid {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .nav-container {
+    padding: 0 16px;
+  }
+
+  .nav-menu {
+    gap: 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .cta-title {
+    font-size: 28px;
+  }
+
+  .project-title {
+    font-size: 20px;
+  }
+
+  .project-info {
+    padding: 24px;
   }
 }

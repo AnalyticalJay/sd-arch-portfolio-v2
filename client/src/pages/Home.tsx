@@ -1,16 +1,24 @@
 import { Link } from 'wouter';
+import { useEffect, useState } from 'react';
 
 /**
  * Design Philosophy: Premium Minimal Architecture
- * - Full-screen hero with centered, elegant typography
- * - Large project images with minimal spacing (20-30px gap)
- * - Smooth hover reveals project title and metadata
- * - Light font weights (300-400) throughout
- * - 1300px max-width container with precise alignment
- * - No unnecessary sections—focus on work
+ * - Full-screen immersive hero with high-quality architectural image
+ * - Subtle zoom animation on load, barely noticeable
+ * - Minimal centered text overlay (studio name + subheading only)
+ * - Transparent navigation overlay
+ * - Image-driven, calm, elegant aesthetic
+ * - No clutter, no extra elements
  */
 
 export default function Home() {
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger fade-in animation on mount
+    setHeroLoaded(true);
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -34,7 +42,7 @@ export default function Home() {
       location: 'Durban',
       year: '2023',
       type: 'Healthcare',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200https://images.unsplash.com/photo-1576091160550-112173f7f869?w=1200&h=800&fit=croph=800https://images.unsplash.com/photo-1576091160550-112173f7f869?w=1200&h=800&fit=cropfit=crop',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop',
     },
     {
       id: 4,
@@ -48,96 +56,77 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="flex items-center justify-between h-20">
-            <Link href="/" className="text-xl font-light tracking-wide text-gray-900">
+      {/* Full-Screen Immersive Hero */}
+      <section
+        className={`hero-section ${heroLoaded ? 'hero-loaded' : ''}`}
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop)',
+        }}
+      >
+        {/* Navigation - Transparent Overlay */}
+        <nav className="hero-nav">
+          <div className="nav-container">
+            <Link href="/" className="nav-logo">
               SDA
             </Link>
-            <div className="flex gap-12">
-              <Link href="/work" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors duration-300">
+            <div className="nav-menu">
+              <Link href="/work" className="nav-link">
                 Work
               </Link>
-              <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors duration-300">
+              <Link href="/about" className="nav-link">
                 About
               </Link>
-              <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors duration-300">
+              <Link href="/contact" className="nav-link">
                 Contact
               </Link>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      {/* Full-Screen Hero */}
-      <section className="relative w-full h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center overflow-hidden">
-        {/* Hero Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&h=900&fit=crop)',
-          }}
-        />
-
-        {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-3xl mx-auto px-8">
-          <h1 className="text-6xl md:text-7xl font-light text-gray-900 mb-6 tracking-tight leading-tight">
-            Sullivan Design Architects
-          </h1>
-          <p className="text-lg md:text-xl font-light text-gray-600 mb-12 leading-relaxed">
-            Minimal. Purposeful. Enduring.
-          </p>
-          <p className="text-sm font-light text-gray-500 tracking-wide uppercase letter-spacing-1">
-            Premium Architecture & Design
-          </p>
+        {/* Hero Content - Minimal and Centered */}
+        <div className="hero-content">
+          <h1 className="hero-title">Sullivan Design Architects</h1>
+          <p className="hero-subtitle">Minimal. Purposeful. Enduring.</p>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="flex flex-col items-center gap-3">
-            <p className="text-xs font-light text-gray-400 tracking-widest uppercase">Scroll</p>
-            <div className="w-px h-8 bg-gradient-to-b from-gray-400 to-transparent" />
-          </div>
+        <div className="scroll-indicator">
+          <div className="scroll-dot" />
         </div>
       </section>
 
       {/* Project Grid Section */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-8">
+      <section className="projects-section">
+        <div className="projects-container">
           {/* Section Title */}
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-4">
-              Recent Work
-            </h2>
-            <div className="w-16 h-px bg-blue-900" />
+          <div className="section-header">
+            <h2 className="section-title">Recent Work</h2>
+            <div className="title-underline" />
           </div>
 
           {/* Project Grid - 2 columns with large images */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="projects-grid">
             {projects.map((project) => (
               <Link
                 key={project.id}
                 href={`/project/${project.id}`}
-                className="group cursor-pointer"
+                className="project-link"
               >
-                <div className="relative overflow-hidden bg-gray-100 aspect-square">
+                <div className="project-card">
                   {/* Project Image */}
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="project-image"
                   />
 
                   {/* Overlay with Project Info */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
+                  <div className="project-overlay" />
 
                   {/* Project Title & Meta - Reveal on Hover */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <h3 className="text-2xl md:text-3xl font-light text-white mb-3 tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm font-light text-gray-200 tracking-wide">
+                  <div className="project-info">
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-meta">
                       {project.location} • {project.year} • {project.type}
                     </p>
                   </div>
@@ -149,16 +138,14 @@ export default function Home() {
       </section>
 
       {/* Studio Philosophy Section */}
-      <section className="bg-gray-50 py-24 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="max-w-2xl">
-            <h3 className="text-3xl font-light text-gray-900 mb-8">
-              Our Approach
-            </h3>
-            <p className="text-base font-light text-gray-600 leading-relaxed mb-6">
+      <section className="philosophy-section">
+        <div className="philosophy-container">
+          <div className="philosophy-content">
+            <h3 className="philosophy-title">Our Approach</h3>
+            <p className="philosophy-text">
               We believe in architecture that speaks through simplicity and intention. Every design decision serves a purpose, every line has meaning, and every space is crafted to enhance human experience.
             </p>
-            <p className="text-base font-light text-gray-600 leading-relaxed">
+            <p className="philosophy-text">
               Our work reflects a commitment to timeless design, sustainable practices, and collaborative excellence.
             </p>
           </div>
@@ -166,75 +153,59 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-white py-24 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-8">
-            Ready to Create Something Meaningful?
-          </h2>
-          <p className="text-lg font-light text-gray-600 mb-12 max-w-2xl mx-auto">
+      <section className="cta-section">
+        <div className="cta-container">
+          <h2 className="cta-title">Ready to Create Something Meaningful?</h2>
+          <p className="cta-subtitle">
             Let's discuss your vision and bring your architectural dreams to life.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-blue-900 text-white px-12 py-4 font-light hover:bg-blue-800 transition-colors duration-300 tracking-wide"
-          >
+          <Link href="/contact" className="cta-button">
             Start a Project
           </Link>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-12">
+      <footer className="footer">
+        <div className="footer-container">
+          <div className="footer-grid">
             {/* Brand */}
-            <div>
-              <h4 className="text-sm font-light text-gray-900 mb-2 tracking-wide">
-                Sullivan Design Architects
-              </h4>
-              <p className="text-xs font-light text-gray-500">
-                Premium architecture design studio
-              </p>
+            <div className="footer-section">
+              <h4 className="footer-heading">Sullivan Design Architects</h4>
+              <p className="footer-text">Premium architecture design studio</p>
             </div>
 
             {/* Navigation */}
-            <div>
-              <h4 className="text-sm font-light text-gray-900 mb-6 tracking-wide">
-                Navigation
-              </h4>
-              <div className="space-y-3">
-                <Link href="/work" className="block text-xs font-light text-gray-600 hover:text-gray-900 transition-colors duration-300">
+            <div className="footer-section">
+              <h4 className="footer-heading">Navigation</h4>
+              <div className="footer-links">
+                <Link href="/work" className="footer-link">
                   Work
                 </Link>
-                <Link href="/about" className="block text-xs font-light text-gray-600 hover:text-gray-900 transition-colors duration-300">
+                <Link href="/about" className="footer-link">
                   About
                 </Link>
-                <Link href="/contact" className="block text-xs font-light text-gray-600 hover:text-gray-900 transition-colors duration-300">
+                <Link href="/contact" className="footer-link">
                   Contact
                 </Link>
               </div>
             </div>
 
             {/* Contact */}
-            <div>
-              <h4 className="text-sm font-light text-gray-900 mb-6 tracking-wide">
-                Contact
-              </h4>
-              <p className="text-xs font-light text-gray-600 mb-2">
-                +27 (0)82 772 8753
-              </p>
-              <p className="text-xs font-light text-gray-600">
-                preston@sdarchstudio.co.za
-              </p>
+            <div className="footer-section">
+              <h4 className="footer-heading">Contact</h4>
+              <p className="footer-text">+27 (0)82 772 8753</p>
+              <p className="footer-text">preston@sdarchstudio.co.za</p>
             </div>
           </div>
 
           {/* Divider */}
-          <div className="border-t border-gray-100 pt-8">
-            <p className="text-xs font-light text-gray-400 text-center">
-              © 2024 Sullivan Design Architects. All rights reserved.
-            </p>
-          </div>
+          <div className="footer-divider" />
+
+          {/* Copyright */}
+          <p className="footer-copyright">
+            © 2024 Sullivan Design Architects. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
