@@ -51,44 +51,56 @@ export default function About() {
           {/* Bio Section */}
           <section className="about-section about-bio-section">
             <div className="about-content">
+              <h2 className="about-welcome">Welcome.</h2>
               <p className="about-bio">
-                Sullivan Design Architects is a forward-thinking studio dedicated to creating spaces that balance form and function. With a focus on sustainable design and innovative solutions, we craft environments that inspire and endure.
+                I believe architecture is more than buildings—it's about shaping how people live, move, and connect within a space. Every project is an opportunity to balance clarity, function, and experience, creating environments that feel considered, purposeful, and enduring.
               </p>
               <p className="about-bio">
-                Our approach combines meticulous attention to detail with a deep understanding of human experience. We believe great architecture emerges from collaboration, creativity, and an unwavering commitment to excellence.
+                Over the past nine years, I've worked across a diverse range of projects—from high-end residential homes to large-scale healthcare and mixed-use developments. This breadth has shaped a design approach that is both pragmatic and adaptable—grounded in technical precision while remaining open to creative exploration.
+              </p>
+              <p className="about-bio">
+                My work is driven by collaboration. Whether leading multidisciplinary teams or working closely with clients and consultants, I focus on translating complex ideas into clear, buildable solutions. From early concept through to construction, I aim to deliver architecture that not only meets expectations but elevates them.
+              </p>
+              <p className="about-bio">
+                With a strong foundation in BIM and technical delivery, I approach design with a deep understanding of how buildings come together—ensuring that ideas are not only compelling, but executable.
+              </p>
+              <p className="about-bio">
+                At its core, my work is about creating spaces that work—functionally, visually, and humanly—while standing the test of time.
               </p>
             </div>
           </section>
 
           {/* Credentials Section */}
           <section className="about-section about-credentials-section">
-            <h2 className="about-subtitle">Credentials</h2>
+            <h2 className="about-subtitle">Experience & Approach</h2>
             <div className="credentials-list">
               <div className="credential-item">
-                <h3 className="credential-title">Expertise</h3>
+                <h3 className="credential-title">Project Types</h3>
                 <ul className="credential-details">
-                  <li>Residential Architecture</li>
-                  <li>Commercial Design</li>
+                  <li>High-end Residential</li>
                   <li>Healthcare Facilities</li>
-                  <li>Mixed-Use Development</li>
+                  <li>Mixed-Use Developments</li>
+                  <li>Commercial Design</li>
                 </ul>
               </div>
 
               <div className="credential-item">
-                <h3 className="credential-title">Recognition</h3>
+                <h3 className="credential-title">Core Strengths</h3>
                 <ul className="credential-details">
-                  <li>International Architecture Award 2023</li>
-                  <li>Design Excellence Award 2022</li>
-                  <li>Sustainable Design Recognition 2021</li>
+                  <li>BIM & Technical Delivery</li>
+                  <li>Design Development</li>
+                  <li>Multidisciplinary Collaboration</li>
+                  <li>Construction Administration</li>
                 </ul>
               </div>
 
               <div className="credential-item">
-                <h3 className="credential-title">Team</h3>
+                <h3 className="credential-title">Design Philosophy</h3>
                 <ul className="credential-details">
-                  <li>Licensed Architects</li>
-                  <li>Design Specialists</li>
-                  <li>Project Managers</li>
+                  <li>Pragmatic & Adaptable</li>
+                  <li>Functionally Driven</li>
+                  <li>Technically Precise</li>
+                  <li>Creatively Exploratory</li>
                 </ul>
               </div>
             </div>

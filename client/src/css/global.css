@@ -824,6 +824,14 @@ a {
   gap: 32px;
 }
 
+.about-welcome {
+  font-size: 28px;
+  font-weight: 300;
+  color: #0D0D0D;
+  margin: 0 0 48px 0;
+  letter-spacing: -0.5px;
+}
+
 .about-bio {
   font-size: 16px;
   font-weight: 300;
