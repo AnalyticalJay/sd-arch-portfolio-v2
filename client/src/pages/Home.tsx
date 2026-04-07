@@ -1,5 +1,6 @@
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { useState, useEffect } from 'react';
+import { usePageTransition } from '@/contexts/PageTransitionContext';
 
 /**
  * Design Philosophy: Premium Minimal Architecture (JLN Architects Inspired)
@@ -13,6 +14,12 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [, setLocation] = useLocation();
+  const { triggerTransition } = usePageTransition();
+
+  const handleStartNow = () => {
+    triggerTransition(() => setLocation('/work'), 600);
+  };
 
   useEffect(() => {
     // Prevent body scroll when menu is open
@@ -76,9 +83,9 @@ export default function Home() {
           </div>
 
           {/* Start Now Button */}
-          <Link href="/work" className="start-button">
+          <button onClick={handleStartNow} className="start-button">
             Start Now
-          </Link>
+          </button>
         </div>
       </section>
     </div>

@@ -4,11 +4,23 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { PageTransitionProvider, usePageTransition } from "./contexts/PageTransitionContext";
 import Home from "./pages/Home";
 import Work from "./pages/Work";
 import ProjectDetail from "./pages/ProjectDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+
+function TransitionOverlay() {
+  const { isTransitioning } = usePageTransition();
+
+  return (
+    <div
+      className={`transition-overlay ${isTransitioning ? 'active' : ''}`}
+      aria-hidden={!isTransitioning}
+    />
+  );
+}
 
 function Router() {
   return (
@@ -33,15 +45,18 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
+      <PageTransitionProvider>
+        <ThemeProvider
+          defaultTheme="light"
+          // switchable
+        >
+          <TooltipProvider>
+            <Toaster />
+            <TransitionOverlay />
+            <Router />
+          </TooltipProvider>
+        </ThemeProvider>
+      </PageTransitionProvider>
     </ErrorBoundary>
   );
 }
