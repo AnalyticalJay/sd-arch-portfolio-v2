@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 
-export default function Home() {
+export default function Work() {
   const projects = [
     {
       id: 1,
@@ -47,7 +47,7 @@ export default function Home() {
             </Link>
             <div className="flex gap-8">
               <Link href="/work">
-                <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">Work</a>
+                <a className="text-sm font-light text-blue-900 hover:text-blue-900 transition-colors">Work</a>
               </Link>
               <Link href="/about">
                 <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">About</a>
@@ -60,35 +60,19 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="hero-section">
-        <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/hero-residential-nAK9GkTR9Z6LadT99QejuV.webp"
-          alt="Hero"
-          className="hero-image"
-        />
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
-          <h1 className="text-5xl md:text-6xl font-light text-white mb-4">Sullivan Design Architects</h1>
-          <p className="text-lg md:text-xl font-light text-gray-100">Minimal. Purposeful. Enduring.</p>
+      {/* Page Header */}
+      <section className="section-spacing bg-white">
+        <div className="container">
+          <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6">Our Work</h1>
+          <p className="text-lg font-light text-gray-600 max-w-2xl">
+            A selection of projects spanning residential, commercial, healthcare, and mixed-use developments. Each represents our commitment to thoughtful design and technical excellence.
+          </p>
         </div>
       </section>
 
-      {/* Studio Intro */}
+      {/* Projects Grid */}
       <section className="section-spacing bg-white">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-              Architecture is more than buildings—it's about shaping how people live, move, and connect within a space. Every project is an opportunity to balance clarity, function, and experience.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="section-spacing bg-white">
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-16">Recent Work</h2>
           <div className="project-grid">
             {projects.map((project) => (
               <Link key={project.id} href={`/project/${project.id}`}>
@@ -109,23 +93,6 @@ export default function Home() {
                 </a>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section-spacing bg-gray-50">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">Let's create something meaningful</h2>
-            <p className="text-base text-gray-600 font-light mb-8">
-              Whether you have a vision or need guidance, I'm here to translate ideas into compelling, buildable solutions.
-            </p>
-            <Link href="/contact">
-              <a className="inline-block bg-blue-900 text-white px-8 py-3 font-light hover:bg-blue-800 transition-colors">
-                Get in Touch
-              </a>
-            </Link>
           </div>
         </div>
       </section>
