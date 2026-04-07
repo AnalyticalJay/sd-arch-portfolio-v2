@@ -39,16 +39,16 @@ export default function Contact() {
               SDA
             </Link>
             <div className="flex gap-8">
-              <Link href="/work" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+              <Link href="/work" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
                 Work
               </Link>
-              <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+              <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
                 About
               </Link>
-              <Link href="/services" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+              <Link href="/services" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
                 Services
               </Link>
-              <Link href="/contact" className="text-sm font-light text-blue-900 hover:text-blue-900 transition-colors">
+              <Link href="/contact" className="text-sm font-light text-blue-900 hover:text-blue-900 transition-colors border-b-2 border-blue-900 pb-1">
                 Contact
               </Link>
             </div>

@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'wouter';
 import { useState, useEffect } from 'react';
+import { useLocation, Link } from 'wouter';
 import { usePageTransition } from '@/contexts/PageTransitionContext';
 
 /**
@@ -23,16 +23,18 @@ const HERO_IMAGES = [
 ];
 
 export default function Home() {
+  const [location, setLocationNav] = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [, setLocation] = useLocation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [nextImageIndex, setNextImageIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const { triggerTransition } = usePageTransition();
 
   const handleStartNow = () => {
-    triggerTransition(() => setLocation('/work'), 600);
+    triggerTransition(() => setLocationNav('/work'), 600);
   };
+
+  const isActive = (path: string) => location === path;
 
   // Image rotation effect
   useEffect(() => {
@@ -83,16 +85,16 @@ export default function Home() {
       {/* Mobile Menu */}
       {menuOpen && (
         <nav className="mobile-menu">
-          <Link href="/work" className="menu-link" onClick={() => setMenuOpen(false)}>
+          <Link href="/work" className={`menu-link ${isActive('/work') ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
             Work
           </Link>
-          <Link href="/about" className="menu-link" onClick={() => setMenuOpen(false)}>
+          <Link href="/about" className={`menu-link ${isActive('/about') ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
             About
           </Link>
-          <Link href="/services" className="menu-link" onClick={() => setMenuOpen(false)}>
+          <Link href="/services" className={`menu-link ${isActive('/services') ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
             Services
           </Link>
-          <Link href="/contact" className="menu-link" onClick={() => setMenuOpen(false)}>
+          <Link href="/contact" className={`menu-link ${isActive('/contact') ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
         </nav>
