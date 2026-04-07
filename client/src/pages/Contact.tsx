@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import { useState } from 'react';
+import { trpc } from '@/lib/trpc';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,10 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const submitContactForm = trpc.contact.submit.useMutation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -18,15 +23,35 @@ export default function Contact() {
       ...prev,
       [name]: value,
     }));
+    setError(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, this would send the form data to a server
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    setTimeout(() => setSubmitted(false), 5000);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const result = await submitContactForm.mutateAsync({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        subject: formData.subject,
+        message: formData.message,
+      });
+
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        setError(result.message || 'Failed to submit form');
+      }
+    } catch (err: any) {
+      setError(err?.message || 'An error occurred while submitting the form');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -116,6 +141,14 @@ export default function Contact() {
               </div>
             )}
 
+            {error && (
+              <div className="mb-8 p-4 bg-red-50 border border-red-200">
+                <p className="text-sm font-light text-red-900">
+                  {error}
+                </p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -198,9 +231,10 @@ export default function Contact() {
               <div>
                 <button
                   type="submit"
-                  className="bg-blue-900 text-white px-8 py-3 font-light hover:bg-blue-800 transition-colors"
+                  disabled={isLoading}
+                  className="bg-blue-900 text-white px-8 py-3 font-light hover:bg-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isLoading ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
             </form>
