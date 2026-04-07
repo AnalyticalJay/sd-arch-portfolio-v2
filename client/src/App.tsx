@@ -13,13 +13,19 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 
 function TransitionOverlay() {
-  const { isTransitioning } = usePageTransition();
+  const { isTransitioning, isFadingIn } = usePageTransition();
 
   return (
-    <div
-      className={`transition-overlay ${isTransitioning ? 'active' : ''}`}
-      aria-hidden={!isTransitioning}
-    />
+    <>
+      <div
+        className={`transition-overlay ${isTransitioning ? 'active' : ''}`}
+        aria-hidden={!isTransitioning}
+      />
+      <div
+        className={`fade-in-overlay ${isFadingIn ? 'active' : ''}`}
+        aria-hidden={!isFadingIn}
+      />
+    </>
   );
 }
 

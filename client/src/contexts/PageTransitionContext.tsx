@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useCallback } from 'react';
 
 interface PageTransitionContextType {
   isTransitioning: boolean;
+  isFadingIn: boolean;
   triggerTransition: (callback: () => void, duration?: number) => void;
 }
 
@@ -9,17 +10,20 @@ const PageTransitionContext = createContext<PageTransitionContextType | undefine
 
 export function PageTransitionProvider({ children }: { children: React.ReactNode }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isFadingIn, setIsFadingIn] = useState(false);
 
   const triggerTransition = useCallback((callback: () => void, duration: number = 600) => {
     setIsTransitioning(true);
     setTimeout(() => {
       callback();
       setIsTransitioning(false);
+      setIsFadingIn(true);
+      setTimeout(() => setIsFadingIn(false), 600);
     }, duration);
   }, []);
 
   return (
-    <PageTransitionContext.Provider value={{ isTransitioning, triggerTransition }}>
+    <PageTransitionContext.Provider value={{ isTransitioning, isFadingIn, triggerTransition }}>
       {children}
     </PageTransitionContext.Provider>
   );
