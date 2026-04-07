@@ -120,6 +120,60 @@ a:hover {
   color: #203B8C;
 }
 
+/* Hover Effects */
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card img {
+  transition: transform 0.5s ease-out;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.project-card:hover .project-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+.project-overlay h3 {
+  font-size: 1.875rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.project-overlay p {
+  font-size: 0.875rem;
+  color: #e5e7eb;
+  letter-spacing: 0.05em;
+}
+
+/* Navigation */
+
+nav {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {
@@ -129,5 +183,13 @@ a:hover {
 
   h1 {
     font-size: 32px;
+  }
+
+  nav {
+    padding: 0 1rem;
+  }
+
+  .project-overlay h3 {
+    font-size: 1.5rem;
   }
 }
