@@ -93,7 +93,7 @@ a {
 /* ===== HAMBURGER MENU ===== */
 
 .hamburger {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 6px;
   background: none;
@@ -365,10 +365,6 @@ a {
 
   .header-content {
     padding: 0 24px;
-  }
-
-  .hamburger {
-    display: flex;
   }
 
   .logo-img {
