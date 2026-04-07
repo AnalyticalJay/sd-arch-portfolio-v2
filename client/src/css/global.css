@@ -205,15 +205,17 @@ a {
   position: relative;
   z-index: 10;
   background: white;
-  padding: 80px 100px;
+  padding: 60px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 60px;
+  gap: 48px;
   animation: contentFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
   opacity: 0;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  width: fit-content;
+  max-width: 500px;
 }
 
 @keyframes contentFadeIn {
@@ -236,7 +238,7 @@ a {
 }
 
 .content-logo-img {
-  height: 120px;
+  height: 100px;
   width: auto;
   object-fit: contain;
   animation: logoFadeIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
@@ -349,12 +351,13 @@ a {
   }
 
   .hero-content-block {
-    padding: 60px 80px;
-    gap: 50px;
+    padding: 50px 70px;
+    gap: 40px;
+    max-width: 450px;
   }
 
   .content-logo-img {
-    height: 100px;
+    height: 90px;
   }
 }
 
@@ -372,12 +375,13 @@ a {
   }
 
   .hero-content-block {
-    padding: 50px 40px;
-    gap: 40px;
+    padding: 45px 50px;
+    gap: 35px;
+    max-width: 380px;
   }
 
   .content-logo-img {
-    height: 80px;
+    height: 75px;
   }
 
   .start-button {
