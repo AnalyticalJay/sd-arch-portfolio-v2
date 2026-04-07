@@ -52,6 +52,9 @@ export default function Work() {
               <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
                 About
               </Link>
+              <Link href="/services" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+                Services
+              </Link>
               <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
                 Contact
               </Link>

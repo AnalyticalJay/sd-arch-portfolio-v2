@@ -89,6 +89,9 @@ export default function Home() {
           <Link href="/about" className="menu-link" onClick={() => setMenuOpen(false)}>
             About
           </Link>
+          <Link href="/services" className="menu-link" onClick={() => setMenuOpen(false)}>
+            Services
+          </Link>
           <Link href="/contact" className="menu-link" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
