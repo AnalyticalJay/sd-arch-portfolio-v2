@@ -62,8 +62,8 @@ export default function ProjectDetail() {
         <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
           <div className="container">
             <div className="flex items-center justify-between py-4">
-              <Link href="/">
-                <a className="text-2xl font-light tracking-wider text-gray-900">SDA</a>
+              <Link href="/" className="text-2xl font-light tracking-wider text-gray-900 hover:text-blue-900 transition-colors">
+                SDA
               </Link>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function ProjectDetail() {
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="container">
           <div className="flex items-center justify-between py-4">
-            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900">
+            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900 hover:text-blue-900 transition-colors">
               SDA
             </Link>
             <div className="flex gap-8">
@@ -90,6 +90,9 @@ export default function ProjectDetail() {
               </Link>
               <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
                 About
+              </Link>
+              <Link href="/services" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+                Services
               </Link>
               <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
                 Contact

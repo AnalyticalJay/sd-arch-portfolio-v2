@@ -35,7 +35,7 @@ export default function Contact() {
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="container">
           <div className="flex items-center justify-between py-4">
-            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900">
+            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900 hover:text-blue-900 transition-colors">
               SDA
             </Link>
             <div className="flex gap-8">

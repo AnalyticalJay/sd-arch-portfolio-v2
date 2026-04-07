@@ -15,10 +15,24 @@ export default function Services() {
       {/* Header */}
       <header className="page-header">
         <div className="header-content">
-          <div className="header-logo">
+          <Link href="/" className="header-logo">
             <img src="/sda-logo.png" alt="SDA" className="logo-img" />
+          </Link>
+          <div className="flex gap-8 hidden md:flex">
+            <Link href="/work" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
+              Work
+            </Link>
+            <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
+              About
+            </Link>
+            <Link href="/services" className="text-sm font-light text-blue-900 hover:text-blue-900 transition-colors border-b-2 border-blue-900 pb-1">
+              Services
+            </Link>
+            <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
+              Contact
+            </Link>
           </div>
-          <button className="hamburger" aria-label="Toggle menu">
+          <button className="hamburger md:hidden" aria-label="Toggle menu">
             <span />
             <span />
             <span />
@@ -36,6 +50,7 @@ export default function Services() {
 
           {/* Services Grid */}
           <section className="services-section services-grid-section">
+            <p className="services-intro">We offer comprehensive architectural services across three core disciplines, each designed to bring your vision to life with precision and creativity.</p>
             <div className="services-grid">
               {/* Design Service */}
               <div className="service-card">
