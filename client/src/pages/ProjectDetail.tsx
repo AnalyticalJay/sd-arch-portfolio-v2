@@ -81,18 +81,18 @@ export default function ProjectDetail() {
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="container">
           <div className="flex items-center justify-between py-4">
-            <Link href="/">
-              <a className="text-2xl font-light tracking-wider text-gray-900">SDA</a>
+            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900">
+              SDA
             </Link>
             <div className="flex gap-8">
-              <Link href="/work">
-                <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">Work</a>
+              <Link href="/work" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+                Work
               </Link>
-              <Link href="/about">
-                <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">About</a>
+              <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+                About
               </Link>
-              <Link href="/contact">
-                <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">Contact</a>
+              <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+                Contact
               </Link>
             </div>
           </div>
@@ -144,11 +144,11 @@ export default function ProjectDetail() {
       <section className="section-spacing bg-gray-50">
         <div className="container">
           <div className="flex justify-between items-center">
-            <Link href="/work">
-              <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">← Back to Work</a>
+            <Link href="/work" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+              ← Back to Work
             </Link>
-            <Link href="/contact">
-              <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">Start a Project →</a>
+            <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+              Start a Project →
             </Link>
           </div>
         </div>
@@ -165,14 +165,14 @@ export default function ProjectDetail() {
             <div>
               <h4 className="text-sm font-light text-gray-900 mb-4">Navigation</h4>
               <div className="space-y-2">
-                <Link href="/work">
-                  <a className="text-xs text-gray-600 font-light hover:text-gray-900 block">Work</a>
+                <Link href="/work" className="text-xs text-gray-600 font-light hover:text-gray-900 block">
+                  Work
                 </Link>
-                <Link href="/about">
-                  <a className="text-xs text-gray-600 font-light hover:text-gray-900 block">About</a>
+                <Link href="/about" className="text-xs text-gray-600 font-light hover:text-gray-900 block">
+                  About
                 </Link>
-                <Link href="/contact">
-                  <a className="text-xs text-gray-600 font-light hover:text-gray-900 block">Contact</a>
+                <Link href="/contact" className="text-xs text-gray-600 font-light hover:text-gray-900 block">
+                  Contact
                 </Link>
               </div>
             </div>

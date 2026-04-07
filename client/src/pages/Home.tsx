@@ -42,18 +42,18 @@ export default function Home() {
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="container">
           <div className="flex items-center justify-between py-4">
-            <Link href="/">
-              <a className="text-2xl font-light tracking-wider text-gray-900">SDA</a>
+            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900">
+              SDA
             </Link>
             <div className="flex gap-8">
-              <Link href="/work">
-                <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">Work</a>
+              <Link href="/work" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+                Work
               </Link>
-              <Link href="/about">
-                <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">About</a>
+              <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+                About
               </Link>
-              <Link href="/contact">
-                <a className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">Contact</a>
+              <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors">
+                Contact
               </Link>
             </div>
           </div>
@@ -91,8 +91,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-16">Recent Work</h2>
           <div className="project-grid">
             {projects.map((project) => (
-              <Link key={project.id} href={`/project/${project.id}`}>
-                <a className="project-card group">
+              <Link key={project.id} href={`/project/${project.id}`} className="project-card group">
                   <div className="relative overflow-hidden h-96">
                     <img
                       src={project.image}
@@ -106,7 +105,6 @@ export default function Home() {
                       {project.location} • {project.year} • {project.type}
                     </p>
                   </div>
-                </a>
               </Link>
             ))}
           </div>
@@ -121,10 +119,8 @@ export default function Home() {
             <p className="text-base text-gray-600 font-light mb-8">
               Whether you have a vision or need guidance, I'm here to translate ideas into compelling, buildable solutions.
             </p>
-            <Link href="/contact">
-              <a className="inline-block bg-blue-900 text-white px-8 py-3 font-light hover:bg-blue-800 transition-colors">
-                Get in Touch
-              </a>
+            <Link href="/contact" className="inline-block bg-blue-900 text-white px-8 py-3 font-light hover:bg-blue-800 transition-colors">
+              Get in Touch
             </Link>
           </div>
         </div>
@@ -141,14 +137,14 @@ export default function Home() {
             <div>
               <h4 className="text-sm font-light text-gray-900 mb-4">Navigation</h4>
               <div className="space-y-2">
-                <Link href="/work">
-                  <a className="text-xs text-gray-600 font-light hover:text-gray-900 block">Work</a>
+                <Link href="/work" className="text-xs text-gray-600 font-light hover:text-gray-900 block">
+                  Work
                 </Link>
-                <Link href="/about">
-                  <a className="text-xs text-gray-600 font-light hover:text-gray-900 block">About</a>
+                <Link href="/about" className="text-xs text-gray-600 font-light hover:text-gray-900 block">
+                  About
                 </Link>
-                <Link href="/contact">
-                  <a className="text-xs text-gray-600 font-light hover:text-gray-900 block">Contact</a>
+                <Link href="/contact" className="text-xs text-gray-600 font-light hover:text-gray-900 block">
+                  Contact
                 </Link>
               </div>
             </div>
