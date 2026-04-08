@@ -1599,3 +1599,275 @@ a {
 .menu-link.active:hover {
   color: #203B8C;
 }
+
+
+/* ===== PROJECT DETAIL PAGE ===== */
+
+.section-spacing {
+  padding: 80px 0;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+  
+  .section-spacing {
+    padding: 60px 0;
+  }
+}
+
+/* Project Info Section */
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.project-info h1 {
+  font-size: 56px;
+  font-weight: 300;
+  color: #0D0D0D;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+@media (max-width: 768px) {
+  .project-info h1 {
+    font-size: 36px;
+  }
+}
+
+/* Project Details Grid */
+.project-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px;
+}
+
+.project-detail-item h3 {
+  font-size: 12px;
+  font-weight: 400;
+  color: #0D0D0D;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.project-detail-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-detail-item li {
+  font-size: 14px;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Gallery Section */
+.gallery-section h2 {
+  font-size: 36px;
+  font-weight: 300;
+  color: #0D0D0D;
+  margin-bottom: 48px;
+  letter-spacing: -0.5px;
+}
+
+.gallery-image {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-image:hover {
+  opacity: 0.9;
+}
+
+/* Testimonials Section */
+.testimonials-section h2 {
+  font-size: 36px;
+  font-weight: 300;
+  color: #0D0D0D;
+  margin-bottom: 48px;
+  letter-spacing: -0.5px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 32px;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #d0d0d0;
+}
+
+.testimonial-quote {
+  font-size: 16px;
+  font-weight: 300;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  font-size: 14px;
+  font-weight: 400;
+  color: #0D0D0D;
+  margin-bottom: 4px;
+}
+
+.testimonial-title {
+  font-size: 12px;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.testimonial-company {
+  font-size: 11px;
+  font-weight: 300;
+  color: #999;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-close:hover {
+  opacity: 0.7;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-nav:hover {
+  opacity: 0.7;
+}
+
+.lightbox-nav.prev {
+  left: 24px;
+}
+
+.lightbox-nav.next {
+  right: 24px;
+}
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-details-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .lightbox-nav {
+    padding: 12px;
+  }
+  
+  .lightbox-nav.prev {
+    left: 12px;
+  }
+  
+  .lightbox-nav.next {
+    right: 12px;
+  }
+  
+  .lightbox-close {
+    top: 16px;
+    right: 16px;
+  }
+}
