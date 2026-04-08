@@ -1871,3 +1871,143 @@ a {
     right: 16px;
   }
 }
+
+
+/* ===== WORK PAGE PREMIUM MASONRY LAYOUT ===== */
+
+.work-masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  grid-auto-rows: 380px;
+}
+
+.work-project-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  color: inherit;
+}
+
+.work-project-card.tall {
+  grid-row: span 1.5;
+}
+
+.work-project-card:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.work-project-image-wrapper {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.work-project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.work-project-card:hover .work-project-image {
+  transform: scale(1.04);
+}
+
+.work-project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.work-project-card:hover .work-project-overlay {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.work-project-info {
+  padding: 20px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.work-project-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: #0D0D0D;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.work-project-location {
+  font-size: 13px;
+  font-weight: 300;
+  color: #999;
+  letter-spacing: 0.05em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.work-project-card:hover .work-project-title {
+  color: #203B8C;
+}
+
+/* Responsive Masonry */
+@media (max-width: 1024px) {
+  .work-masonry-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    grid-auto-rows: 320px;
+  }
+  
+  .work-project-card.tall {
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-masonry-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    grid-auto-rows: 300px;
+  }
+  
+  .work-project-info {
+    padding: 16px;
+  }
+  
+  .work-project-title {
+    font-size: 15px;
+  }
+  
+  .work-project-location {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-masonry-grid {
+    grid-auto-rows: 250px;
+    gap: 12px;
+  }
+  
+  .work-project-info {
+    padding: 12px;
+  }
+  
+  .work-project-title {
+    font-size: 14px;
+  }
+}
