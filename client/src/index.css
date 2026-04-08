@@ -44,15 +44,15 @@
 }
 
 :root {
-  --primary: #203B8C;
+  --primary: #0D0D0D;
   --primary-foreground: #FFFFFF;
-  --sidebar-primary: #203B8C;
+  --sidebar-primary: #0D0D0D;
   --sidebar-primary-foreground: #FFFFFF;
-  --chart-1: #203B8C;
-  --chart-2: #203B8C;
-  --chart-3: #203B8C;
-  --chart-4: #203B8C;
-  --chart-5: #203B8C;
+  --chart-1: #0D0D0D;
+  --chart-2: #0D0D0D;
+  --chart-3: #0D0D0D;
+  --chart-4: #0D0D0D;
+  --chart-5: #0D0D0D;
   --radius: 0rem;
   --background: #FFFFFF;
   --foreground: #0D0D0D;
@@ -64,19 +64,19 @@
   --secondary-foreground: #0D0D0D;
   --muted: #E8E8E8;
   --muted-foreground: #666666;
-  --accent: #203B8C;
+  --accent: #0D0D0D;
   --accent-foreground: #FFFFFF;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
   --border: #E8E8E8;
   --input: #FFFFFF;
-  --ring: #203B8C;
+  --ring: #0D0D0D;
   --sidebar: #FFFFFF;
   --sidebar-foreground: #0D0D0D;
-  --sidebar-accent: #203B8C;
+  --sidebar-accent: #0D0D0D;
   --sidebar-accent-foreground: #FFFFFF;
   --sidebar-border: #E8E8E8;
-  --sidebar-ring: #203B8C;
+  --sidebar-ring: #0D0D0D;
 }
 
 .dark {

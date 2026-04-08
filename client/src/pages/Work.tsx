@@ -69,20 +69,20 @@ export default function Work() {
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-100">
         <div className="container">
           <div className="flex items-center justify-between py-4">
-            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900 hover:text-blue-900 transition-colors">
+            <Link href="/" className="text-2xl font-light tracking-wider text-gray-900 hover:text-gray-900 transition-colors">
               SDA
             </Link>
             <div className="flex gap-8">
-              <Link href="/work" className="text-sm font-light text-blue-900 hover:text-blue-900 transition-colors border-b-2 border-blue-900 pb-1">
+              <Link href="/work" className="text-sm font-light text-gray-900 hover:text-gray-900 transition-colors border-b-2 border-gray-900 pb-1">
                 Work
               </Link>
-              <Link href="/about" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
+              <Link href="/about" className="text-sm font-light text-gray-900 hover:text-gray-900 transition-colors pb-1">
                 About
               </Link>
-              <Link href="/services" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
+              <Link href="/services" className="text-sm font-light text-gray-900 hover:text-gray-900 transition-colors pb-1">
                 Services
               </Link>
-              <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-blue-900 transition-colors pb-1">
+              <Link href="/contact" className="text-sm font-light text-gray-900 hover:text-gray-900 transition-colors pb-1">
                 Contact
               </Link>
             </div>
@@ -112,7 +112,7 @@ export default function Work() {
                 onClick={() => setActiveFilter(category)}
                 className={`text-sm font-light tracking-wide transition-all duration-300 pb-2 border-b-2 ${
                   activeFilter === category
-                    ? 'text-gray-900 border-blue-900'
+                    ? 'text-gray-900 border-gray-900'
                     : 'text-gray-500 border-transparent hover:text-gray-700'
                 }`}
               >
