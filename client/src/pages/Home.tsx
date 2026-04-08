@@ -7,27 +7,18 @@ import { usePageTransition } from '@/contexts/PageTransitionContext';
  * - Full-screen photography-first hero (100vh, edge-to-edge)
  * - White header with logo and hamburger navigation
  * - Centered white block with SDA logo and "Start Now" CTA
- * - Hero image rotation cycles through architectural images
+ * - Static hero background with enhanced minimal architectural image
  * - Minimal animations, photography dominates
  * - No other sections on homepage
  * - Page transitions with smooth effects
  */
 
-// Array of minimal modern architecture images
-const HERO_IMAGES = [
-  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/egncnqeqqsoZ_4621643a.jpg',
-  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/9gkdiNe0yOOn_01cb3c9c.jpg',
-  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/RQgQjyscogTe_46017298.jpg',
-  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/seApnYDJv1jB_6a7ab69a.jpg',
-  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/egncnqeqqsoZ_4621643a.jpg',
-];
+// Static hero background image - enhanced minimal architecture
+const HERO_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/hero-minimal-architecture-enhanced_3de0a1a0.png';
 
 export default function Home() {
   const [location, setLocationNav] = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [nextImageIndex, setNextImageIndex] = useState(1);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const { triggerTransition } = usePageTransition();
 
   const handleStartNow = () => {
@@ -35,20 +26,6 @@ export default function Home() {
   };
 
   const isActive = (path: string) => location === path;
-
-  // Image rotation effect
-  useEffect(() => {
-    const imageRotationInterval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-        setNextImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-        setIsTransitioning(false);
-      }, 800);
-    }, 8000); // Change image every 8 seconds
-
-    return () => clearInterval(imageRotationInterval);
-  }, []);
 
   useEffect(() => {
     // Prevent body scroll when menu is open
@@ -100,23 +77,15 @@ export default function Home() {
         </nav>
       )}
 
-      {/* Full-Screen Hero with Image Rotation */}
+      {/* Full-Screen Hero with Static Background */}
       <section className="hero-wrapper">
-        {/* Background image layer with rotation */}
-        <div className="hero-background-layer">
-          <div
-            className={`hero-image hero-image-current ${isTransitioning ? 'fade-out' : 'fade-in'}`}
-            style={{
-              backgroundImage: `url(${HERO_IMAGES[currentImageIndex]})`,
-            }}
-          />
-          <div
-            className={`hero-image hero-image-next ${isTransitioning ? 'fade-in' : 'fade-out'}`}
-            style={{
-              backgroundImage: `url(${HERO_IMAGES[nextImageIndex]})`,
-            }}
-          />
-        </div>
+        {/* Static background image */}
+        <div 
+          className="hero-background-static"
+          style={{
+            backgroundImage: `url(${HERO_IMAGE})`,
+          }}
+        />
 
         {/* Hero section with content block on top */}
         <section className="hero">
