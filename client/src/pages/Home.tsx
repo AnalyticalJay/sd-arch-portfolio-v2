@@ -13,13 +13,13 @@ import { usePageTransition } from '@/contexts/PageTransitionContext';
  * - Page transitions with smooth effects
  */
 
-// Array of high-quality architectural images
+// Array of minimal modern architecture images
 const HERO_IMAGES = [
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop',
-  'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&h=1080&fit=crop',
-  'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1920&h=1080&fit=crop',
-  'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1920&h=1080&fit=crop',
-  'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=1920&h=1080&fit=crop',
+  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/egncnqeqqsoZ_4621643a.jpg',
+  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/9gkdiNe0yOOn_01cb3c9c.jpg',
+  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/RQgQjyscogTe_46017298.jpg',
+  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/seApnYDJv1jB_6a7ab69a.jpg',
+  'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/egncnqeqqsoZ_4621643a.jpg',
 ];
 
 export default function Home() {
