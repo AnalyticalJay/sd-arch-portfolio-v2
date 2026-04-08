@@ -96,6 +96,9 @@ export default function Home() {
               <img src="/sda-logo.png" alt="Sullivan Design Architects" className="content-logo-img" />
             </div>
 
+            {/* Tagline */}
+            <p className="hero-tagline">Designing Spaces That Endure</p>
+
             {/* Start Now Button */}
             <button onClick={handleStartNow} className="start-button">
               Start Now
