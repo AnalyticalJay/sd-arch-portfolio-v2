@@ -952,6 +952,7 @@ a {
   padding: 40px;
   background: #fafafa;
   border: 1px solid #f0f0f0;
+  border-left: 3px solid #3a3a3a;
   border-radius: 4px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
@@ -976,6 +977,7 @@ a {
 .credential-card.expanded {
   background: white;
   border-color: #e0e0e0;
+  border-left-color: #0D0D0D;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
 }
@@ -1381,11 +1383,13 @@ a {
   gap: 32px;
   padding: 60px;
   background: #fafafa;
+  border-top: 3px solid #3a3a3a;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .service-card:hover {
   background: #f5f5f5;
+  border-top-color: #0D0D0D;
   transform: translateY(-4px);
 }
 
@@ -1886,6 +1890,7 @@ a {
   position: relative;
   overflow: hidden;
   border: 1px solid #e8e8e8;
+  border-left: 3px solid #3a3a3a;
   border-radius: 2px;
   cursor: pointer;
   display: flex;
@@ -1901,6 +1906,7 @@ a {
 
 .work-project-card:hover {
   border-color: #d0d0d0;
+  border-left-color: #0D0D0D;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
