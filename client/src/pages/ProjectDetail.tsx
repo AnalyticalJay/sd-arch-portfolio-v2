@@ -8,33 +8,33 @@ export default function ProjectDetail() {
 
   const projectsData: Record<string, any> = {
     '1': {
-      title: 'Truworths Plain Park Head Office',
-      location: 'Cape Town',
-      year: '2021',
-      type: 'Commercial',
-      heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/truworths-plain-park_9ba4f43a.png',
-      description: 'A contemporary commercial headquarters designed to reflect corporate excellence and innovation. The project features open-plan office spaces, collaborative zones, and premium executive suites with panoramic city views. The design emphasizes natural light, sustainable materials, and flexible workspaces that adapt to modern business needs.',
-      fullDescription: 'Truworths Plain Park Head Office represents a paradigm shift in corporate workspace design. The 15,000 sqm facility combines cutting-edge architectural design with functional efficiency. Every element has been carefully considered to create an environment that inspires creativity and fosters collaboration. From the soaring atrium to the thoughtfully designed breakout spaces, the building serves as a physical manifestation of the company\'s values and vision.',
-      scope: ['Master Planning', 'Architectural Design', 'Interior Design', 'Landscape Design', 'Project Management'],
-      budget: 'R 250 Million',
-      team: ['Lead Architect: Preston Sullivan', 'Design Team: 12 Architects', 'Structural Engineer: Arup', 'MEP Engineer: Aurecon'],
+      title: 'Container House',
+      location: 'Pringle Bay',
+      year: '2024',
+      type: 'Residential',
+      heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
+      description: 'Container House is a compact, site-responsive dwelling embedded within the sloping terrain of Pringle Bay. Constructed from repurposed steel containers, the project adopts a strategy of accommodation rather than imposition, aligning its form with the natural topography. Elevated structural elements minimize ground contact, addressing the site\'s sensitive, marsh-like soil conditions.',
+      fullDescription: 'Container House Pringle Bay represents a paradigm of sustainable, contextual design. The project demonstrates how industrial materials can be transformed into refined residential spaces. The spatial organization is structured around a central courtyard, which functions as both the experiential and environmental core of the residence. Existing vegetation is intentionally retained within this space, enabling the indigenous landscape to extend into the architectural domain and mediate the boundary between interior and exterior conditions. A restrained material palette—comprising timber, steel, glass, and stone-filled gabions—supports this conceptual framework. Gabion walls provide both structural stability and visual grounding, while timber elements introduce warmth, tactility, and a human-scaled counterpoint to the industrial qualities of the containers.',
+      scope: ['Residential Design', 'Sustainable Design', 'Landscape Integration', 'Material Innovation', 'Site-Responsive Architecture'],
+      budget: 'R 4.5 Million',
+      team: ['Lead Architect: Preston Sullivan', 'Structural Engineer: Specialist in Container Architecture', 'Landscape Architect: Environmental Specialist', 'Sustainability Consultant: Green Building Expert'],
       gallery: [
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/truworths-plain-park_9ba4f43a.png',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/truworths-plain-park_9ba4f43a.png',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/truworths-plain-park_9ba4f43a.png',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
       ],
       testimonials: [
         {
-          name: 'John Smith',
-          title: 'CEO, Truworths Group',
-          quote: 'Sullivan Design Architects delivered a workspace that exceeded our expectations. The attention to detail and innovative design solutions have transformed how our team works and collaborates.',
-          company: 'Truworths Group'
+          name: 'Property Owner',
+          title: 'Client, Container House Project',
+          quote: 'Sullivan Design Architects transformed our vision into reality. The innovative use of containers combined with sensitive site integration created a truly unique home. The attention to environmental detail and material craftsmanship is exceptional.',
+          company: 'Container House Pringle Bay'
         },
         {
-          name: 'Sarah Johnson',
-          title: 'Facilities Manager',
-          quote: 'The building is not just beautiful—it\'s incredibly functional. The design has improved employee satisfaction and productivity significantly.',
-          company: 'Truworths Group'
+          name: 'Local Community Representative',
+          title: 'Environmental Advocate',
+          quote: 'This project demonstrates how contemporary architecture can respect and enhance the natural environment. The design seamlessly integrates with Pringle Bay\'s landscape while providing a sophisticated living space.',
+          company: 'Pringle Bay Community'
         }
       ]
     },

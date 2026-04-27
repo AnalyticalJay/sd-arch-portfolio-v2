@@ -7,12 +7,12 @@ export default function Work() {
   const projects = [
     {
       id: 1,
-      title: 'Truworths Plain Park Head Office',
-      location: 'Cape Town',
-      year: '2021',
-      type: 'Commercial',
-      category: 'Commercial',
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/truworths-plain-park_9ba4f43a.png',
+      title: 'Container House',
+      location: 'Pringle Bay',
+      year: '2024',
+      type: 'Residential',
+      category: 'Residential',
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
       height: 'tall'
     },
     {
