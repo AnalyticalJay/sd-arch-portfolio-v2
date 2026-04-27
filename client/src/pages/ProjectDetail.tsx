@@ -23,6 +23,44 @@ export default function ProjectDetail() {
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
       ],
+      drawings: [
+        {
+          title: 'Site Plan',
+          description: 'Overall site layout showing container placement, courtyard orientation, and landscape integration',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-site-plan_placeholder.png',
+          type: 'Plan'
+        },
+        {
+          title: 'Ground Floor Plan',
+          description: 'Living areas, kitchen, courtyard access, and spatial flow of the main level',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-ground-floor_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Upper Floor Plan',
+          description: 'Bedroom suites, bathrooms, and mezzanine spaces with views to courtyard',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-upper-floor_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'North Elevation',
+          description: 'Primary facade showing container stacking, timber screens, and glazing strategy',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-north-elevation_placeholder.png',
+          type: 'Elevation'
+        },
+        {
+          title: 'Section A-A',
+          description: 'Vertical section showing courtyard integration, level changes, and spatial relationships',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-section-aa_placeholder.png',
+          type: 'Section'
+        },
+        {
+          title: 'Material Detail',
+          description: 'Construction details showing container modification, gabion walls, and timber integration',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-detail_placeholder.png',
+          type: 'Detail'
+        }
+      ],
       testimonials: [
         {
           name: 'Property Owner',
@@ -290,6 +328,37 @@ export default function ProjectDetail() {
           </div>
         </div>
       </section>
+
+      {/* Architectural Drawings */}
+      {project.drawings && project.drawings.length > 0 && (
+        <section className="section-spacing bg-white border-t border-gray-200">
+          <div className="container">
+            <h2 className="text-3xl font-light text-gray-900 mb-12">Architectural Drawings</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {project.drawings.map((drawing: any, index: number) => (
+                <div key={index} className="space-y-4">
+                  <div className="bg-gray-100 overflow-hidden cursor-pointer group">
+                    <img
+                      src={drawing.image}
+                      alt={drawing.title}
+                      className="w-full h-auto object-cover group-hover:opacity-90 transition-opacity"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs font-light text-gray-500 uppercase tracking-wide">{drawing.type}</span>
+                      <span className="w-1 h-1 bg-gray-300"></span>
+                      <span className="text-xs font-light text-gray-500">Drawing {index + 1}</span>
+                    </div>
+                    <h3 className="text-lg font-light text-gray-900 mb-2">{drawing.title}</h3>
+                    <p className="text-sm font-light text-gray-600">{drawing.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Testimonials */}
       <section className="section-spacing bg-gray-50 border-t border-gray-200">
