@@ -92,6 +92,44 @@ export default function ProjectDetail() {
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-mixed-use_653a2380.png',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-mixed-use_653a2380.png',
       ],
+      drawings: [
+        {
+          title: 'Master Plan',
+          description: 'Overall site layout showing residential, retail, and recreational zones with traffic circulation',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-masterplan_placeholder.png',
+          type: 'Plan'
+        },
+        {
+          title: 'Residential Block Plan',
+          description: 'Detailed layout of residential neighborhoods with unit distribution and amenities',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-residential-plan_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Retail & Commercial Plan',
+          description: 'Ground floor retail layout with shop units, restaurants, and public gathering spaces',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-retail-plan_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Street Elevation',
+          description: 'Primary street facade showing residential towers and retail frontage',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-elevation_placeholder.png',
+          type: 'Elevation'
+        },
+        {
+          title: 'Vertical Section',
+          description: 'Cross-section showing mixed-use integration from retail to residential levels',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-section_placeholder.png',
+          type: 'Section'
+        },
+        {
+          title: 'Landscape Design',
+          description: 'Public spaces, parks, plazas, and landscaping strategy for community engagement',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parklands-landscape_placeholder.png',
+          type: 'Detail'
+        }
+      ],
       testimonials: [
         {
           name: 'Michael Chen',
@@ -122,6 +160,44 @@ export default function ProjectDetail() {
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-domestic-terminal_f9ad9230.png',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-domestic-terminal_f9ad9230.png',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-domestic-terminal_f9ad9230.png',
+      ],
+      drawings: [
+        {
+          title: 'Terminal Layout Plan',
+          description: 'Overall floor plan showing check-in, security, departure lounges, and retail areas',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-layout_placeholder.png',
+          type: 'Plan'
+        },
+        {
+          title: 'Check-In Area Plan',
+          description: 'Detailed layout of check-in counters, queuing systems, and passenger flow',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-checkin-plan_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Departure Lounge Plan',
+          description: 'Spacious departure lounge with seating, retail, and dining facilities',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-lounge-plan_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Terminal Elevation',
+          description: 'Primary facade with natural light integration and contemporary design language',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-elevation_placeholder.png',
+          type: 'Elevation'
+        },
+        {
+          title: 'Vertical Section',
+          description: 'Cross-section showing terminal levels, natural ventilation, and structural systems',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-section_placeholder.png',
+          type: 'Section'
+        },
+        {
+          title: 'Wayfinding Design',
+          description: 'Signage, lighting, and navigation systems for intuitive passenger experience',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/airport-wayfinding_placeholder.png',
+          type: 'Detail'
+        }
       ],
       testimonials: [
         {
@@ -154,6 +230,44 @@ export default function ProjectDetail() {
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-apartments_3621efbe.png',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-apartments_3621efbe.png',
       ],
+      drawings: [
+        {
+          title: 'Site Plan',
+          description: 'Overall site layout showing twin towers, parking, landscaping, and public spaces',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-site-plan_placeholder.png',
+          type: 'Plan'
+        },
+        {
+          title: 'Typical Floor Plan',
+          description: 'Representative floor showing apartment units, corridors, and common areas',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-floor-plan_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Penthouse Plan',
+          description: 'Luxury penthouse units with expansive terraces and premium finishes',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-penthouse-plan_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Tower Elevation',
+          description: 'Twin tower facade showing contemporary design and material expression',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-elevation_placeholder.png',
+          type: 'Elevation'
+        },
+        {
+          title: 'Vertical Section',
+          description: 'Cross-section showing tower height, amenities, and structural systems',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-section_placeholder.png',
+          type: 'Section'
+        },
+        {
+          title: 'Amenities Design',
+          description: 'Rooftop gardens, pools, fitness centers, and concierge facilities',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/bantry-amenities_placeholder.png',
+          type: 'Detail'
+        }
+      ],
       testimonials: [
         {
           name: 'Victoria Rothschild',
@@ -184,6 +298,44 @@ export default function ProjectDetail() {
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-social-housing_3a8a1cf6.png',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-social-housing_3a8a1cf6.png',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-social-housing_3a8a1cf6.png',
+      ],
+      drawings: [
+        {
+          title: 'Master Plan',
+          description: 'Overall site layout showing 200 housing units, community facilities, and green spaces',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-masterplan_placeholder.png',
+          type: 'Plan'
+        },
+        {
+          title: 'Housing Unit Plan',
+          description: 'Typical affordable housing unit design with efficient layout and quality finishes',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-unit-plan_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Community Center Plan',
+          description: 'Multi-purpose community facilities including classrooms, meeting spaces, and services',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-community-plan_placeholder.png',
+          type: 'Floor Plan'
+        },
+        {
+          title: 'Housing Block Elevation',
+          description: 'Residential block facade showing human-scale design and material warmth',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-elevation_placeholder.png',
+          type: 'Elevation'
+        },
+        {
+          title: 'Vertical Section',
+          description: 'Cross-section showing unit stacking, ventilation, and community integration',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-section_placeholder.png',
+          type: 'Section'
+        },
+        {
+          title: 'Landscape & Public Spaces',
+          description: 'Green spaces, playgrounds, and community gathering areas for social cohesion',
+          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/parow-landscape_placeholder.png',
+          type: 'Detail'
+        }
       ],
       testimonials: [
         {
