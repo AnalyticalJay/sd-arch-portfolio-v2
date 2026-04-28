@@ -12,7 +12,7 @@ export default function Work() {
       year: '2024',
       type: 'Residential',
       category: 'Residential',
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
+      image: '/manus-storage/3D02.2_573c0231.png',
       height: 'tall'
     },
     {

@@ -12,7 +12,7 @@ export default function ProjectDetail() {
       location: 'Pringle Bay',
       year: '2024',
       type: 'Residential',
-      heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
+      heroImage: '/manus-storage/3D02.2_573c0231.png',
       description: 'Container House is a compact, site-responsive dwelling embedded within the sloping terrain of Pringle Bay. Constructed from repurposed steel containers, the project adopts a strategy of accommodation rather than imposition, aligning its form with the natural topography. Elevated structural elements minimize ground contact, addressing the site\'s sensitive, marsh-like soil conditions.',
       fullDescription: 'Container House Pringle Bay represents a paradigm of sustainable, contextual design. The project demonstrates how industrial materials can be transformed into refined residential spaces. The spatial organization is structured around a central courtyard, which functions as both the experiential and environmental core of the residence. Existing vegetation is intentionally retained within this space, enabling the indigenous landscape to extend into the architectural domain and mediate the boundary between interior and exterior conditions. A restrained material palette—comprising timber, steel, glass, and stone-filled gabions—supports this conceptual framework. Gabion walls provide both structural stability and visual grounding, while timber elements introduce warmth, tactility, and a human-scaled counterpoint to the industrial qualities of the containers.',
       scope: ['Residential Design', 'Sustainable Design', 'Landscape Integration', 'Material Innovation', 'Site-Responsive Architecture'],
