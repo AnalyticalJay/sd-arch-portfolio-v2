@@ -25,40 +25,40 @@ export default function ProjectDetail() {
       ],
       drawings: [
         {
-          title: 'Site Plan',
-          description: 'Overall site layout showing container placement, courtyard orientation, and landscape integration',
-          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-site-plan_placeholder.png',
+          title: 'General Arrangement & Site Plan',
+          description: 'Overall site layout showing container placement, courtyard orientation, and landscape integration with electrical legend',
+          image: '/manus-storage/container-house-page-1_1b598162.png',
           type: 'Plan'
         },
         {
-          title: 'Ground Floor Plan',
-          description: 'Living areas, kitchen, courtyard access, and spatial flow of the main level',
-          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-ground-floor_placeholder.png',
+          title: 'Ground Floor Plan & Electrical',
+          description: 'Living areas, kitchen, courtyard access, electrical systems, and spatial flow of the main level',
+          image: '/manus-storage/container-house-page-2_7bf11d05.png',
           type: 'Floor Plan'
         },
         {
-          title: 'Upper Floor Plan',
-          description: 'Bedroom suites, bathrooms, and mezzanine spaces with views to courtyard',
-          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-upper-floor_placeholder.png',
-          type: 'Floor Plan'
-        },
-        {
-          title: 'North Elevation',
-          description: 'Primary facade showing container stacking, timber screens, and glazing strategy',
-          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-north-elevation_placeholder.png',
-          type: 'Elevation'
-        },
-        {
-          title: 'Section A-A',
-          description: 'Vertical section showing courtyard integration, level changes, and spatial relationships',
-          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-section-aa_placeholder.png',
+          title: 'Structural & Mechanical Details',
+          description: 'Structural details, mechanical systems, and construction specifications for container modification',
+          image: '/manus-storage/container-house-page-3_4b1e3fd2.png',
           type: 'Section'
         },
         {
-          title: 'Material Detail',
-          description: 'Construction details showing container modification, gabion walls, and timber integration',
-          image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-detail_placeholder.png',
+          title: 'Detailed Construction Drawings',
+          description: 'Comprehensive construction details showing container modification, gabion walls, timber integration, and finishes',
+          image: '/manus-storage/container-house-page-4_4828cbf7.png',
           type: 'Detail'
+        },
+        {
+          title: 'Material Specifications',
+          description: 'Container specifications: 12x2.4x2.9m Class B containers with 98mm spray foam insulation, timber cladding, and sustainable finishes',
+          image: '/manus-storage/container-house-page-1_1b598162.png',
+          type: 'Detail'
+        },
+        {
+          title: 'Landscape Integration',
+          description: 'Courtyard design with retained indigenous vegetation, gabion steps, timber decking, and environmental integration strategy',
+          image: '/manus-storage/container-house-page-2_7bf11d05.png',
+          type: 'Plan'
         }
       ],
       testimonials: [
