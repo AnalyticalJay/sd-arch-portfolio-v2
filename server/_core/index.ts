@@ -7,6 +7,7 @@ import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { storageGet } from "../storage";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -35,6 +36,19 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+  
+  // Storage proxy for /manus-storage/* paths
+  app.get("/manus-storage/:key(*)", async (req, res) => {
+    try {
+      const key = req.params.key;
+      const { url } = await storageGet(key);
+      res.redirect(url);
+    } catch (error) {
+      console.error("Storage proxy error:", error);
+      res.status(404).json({ error: "File not found" });
+    }
+  });
+  
   // tRPC API
   app.use(
     "/api/trpc",
