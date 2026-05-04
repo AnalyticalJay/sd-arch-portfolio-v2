@@ -12,7 +12,7 @@ export default function Work() {
       year: '2024',
       type: 'Residential',
       category: 'Residential',
-      image: '/manus-storage/3D02.2_573c0231.png',
+      image: '/manus-storage/3D02.2_e75a922f.png',
       height: 'tall'
     },
     {

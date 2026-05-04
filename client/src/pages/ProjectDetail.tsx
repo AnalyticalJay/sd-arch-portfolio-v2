@@ -12,16 +12,42 @@ export default function ProjectDetail() {
       location: 'Pringle Bay',
       year: '2024',
       type: 'Residential',
-      heroImage: '/manus-storage/3D02.2_573c0231.png',
+      heroImage: '/manus-storage/3D02.2_e75a922f.png',
       description: 'Container House is a compact, site-responsive dwelling embedded within the sloping terrain of Pringle Bay. Constructed from repurposed steel containers, the project adopts a strategy of accommodation rather than imposition, aligning its form with the natural topography. Elevated structural elements minimize ground contact, addressing the site\'s sensitive, marsh-like soil conditions.',
       fullDescription: 'Container House Pringle Bay represents a paradigm of sustainable, contextual design. The project demonstrates how industrial materials can be transformed into refined residential spaces. The spatial organization is structured around a central courtyard, which functions as both the experiential and environmental core of the residence. Existing vegetation is intentionally retained within this space, enabling the indigenous landscape to extend into the architectural domain and mediate the boundary between interior and exterior conditions. A restrained material palette—comprising timber, steel, glass, and stone-filled gabions—supports this conceptual framework. Gabion walls provide both structural stability and visual grounding, while timber elements introduce warmth, tactility, and a human-scaled counterpoint to the industrial qualities of the containers.',
       scope: ['Residential Design', 'Sustainable Design', 'Landscape Integration', 'Material Innovation', 'Site-Responsive Architecture'],
+      keyFeatures: [
+        {
+          title: 'Sustainable Container Construction',
+          description: 'Repurposed Class B shipping containers provide the structural core, reducing embodied carbon while creating durable, weather-resistant walls. Containers are elevated on structural supports to minimize ground contact and protect sensitive marsh soil.'
+        },
+        {
+          title: 'Central Courtyard Design',
+          description: 'The heart of the residence features a protected courtyard that preserves existing indigenous vegetation. This space functions as both the environmental and experiential core, creating natural ventilation and visual connection to the landscape.'
+        },
+        {
+          title: 'Material Palette Innovation',
+          description: 'A carefully curated selection of materials—timber, steel, glass, and stone-filled gabions—creates visual warmth and tactile richness. Gabion walls provide structural stability while introducing natural stone elements that ground the design contextually.'
+        },
+        {
+          title: 'Responsive Site Integration',
+          description: 'The design responds sensitively to Pringle Bay\'s sloping terrain and ecological sensitivity. Elevated structural elements minimize environmental impact while maximizing views and natural light penetration throughout the residence.'
+        },
+        {
+          title: 'Passive Environmental Control',
+          description: 'Strategic window placement, thermal mass from containers, and natural ventilation through the courtyard minimize mechanical conditioning needs. Timber cladding provides solar control while maintaining aesthetic refinement.'
+        },
+        {
+          title: 'Landscape Seamless Integration',
+          description: 'Gabion steps, timber decking, and retained vegetation create a gradual transition between built and natural environments. The design enhances rather than imposes upon the existing landscape character.'
+        }
+      ],
       budget: 'R 4.5 Million',
       team: ['Lead Architect: Preston Sullivan', 'Structural Engineer: Specialist in Container Architecture', 'Landscape Architect: Environmental Specialist', 'Sustainability Consultant: Green Building Expert'],
       gallery: [
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
+        '/manus-storage/2026-04-2310-16-48_17b369b3.jpg',
+        '/manus-storage/3D02.2(1)_b13ef876.png',
+        '/manus-storage/3D03(1)_fb874232.jpg',
       ],
       drawings: [
         {
@@ -458,6 +484,23 @@ export default function ProjectDetail() {
           </div>
         </div>
       </section>
+
+      {/* Key Features */}
+      {project.keyFeatures && project.keyFeatures.length > 0 && (
+        <section className="section-spacing bg-white border-t border-gray-200">
+          <div className="container">
+            <h2 className="text-3xl font-light text-gray-900 mb-12">Key Features</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {project.keyFeatures.map((feature: any, index: number) => (
+                <div key={index} className="space-y-4 pb-8 border-b border-gray-200 last:border-b-0">
+                  <h3 className="text-lg font-light text-gray-900">{feature.title}</h3>
+                  <p className="text-sm font-light text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Gallery */}
       <section className="section-spacing bg-white">
