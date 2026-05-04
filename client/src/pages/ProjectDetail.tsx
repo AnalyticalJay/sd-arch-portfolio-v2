@@ -45,9 +45,9 @@ export default function ProjectDetail() {
       budget: 'R 4.5 Million',
       team: ['Lead Architect: Preston Sullivan', 'Structural Engineer: Specialist in Container Architecture', 'Landscape Architect: Environmental Specialist', 'Sustainability Consultant: Green Building Expert'],
       gallery: [
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663347374433/3rF6KoUcpVw7sfPdws5W3r/container-house-pringle-bay_placeholder.png',
+        '/manus-storage/2026-04-2310-16-48_17b369b3.jpg',
+        '/manus-storage/3D02.2(1)_b13ef876.png',
+        '/manus-storage/3D03(1)_fb874232.jpg',
       ],
       drawings: [
         {
