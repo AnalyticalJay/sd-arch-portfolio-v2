@@ -565,3 +565,63 @@ html.lenis {
     @apply px-16;
   }
 }
+
+
+/* ============================================================================
+   INDUSTRY CARDS - CUSTOM STYLING
+   ============================================================================ */
+
+.industry-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(15, 30, 51, 0.8) 0%, rgba(7, 17, 28, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+}
+
+.industry-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(19, 196, 107, 0.1) 0%, rgba(27, 142, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.industry-card:hover {
+  border-color: rgba(19, 196, 107, 0.4);
+  background: linear-gradient(135deg, rgba(15, 30, 51, 0.95) 0%, rgba(7, 17, 28, 1) 100%);
+  box-shadow: 0 8px 32px rgba(19, 196, 107, 0.15);
+  transform: translateY(-4px);
+}
+
+.industry-card:hover::before {
+  opacity: 1;
+}
+
+.industry-icon {
+  transition: all var(--transition-base);
+}
+
+.industry-card:hover .industry-icon {
+  background-color: rgba(19, 196, 107, 0.2);
+  transform: scale(1.1);
+}
+
+.industry-card h3 {
+  transition: color var(--transition-base);
+}
+
+.industry-card:hover h3 {
+  color: var(--color-primary-green);
+}
+
+.industry-card p {
+  transition: color var(--transition-base);
+}
+
+.industry-card:hover p {
+  color: rgba(255, 255, 255, 0.8);
+}
