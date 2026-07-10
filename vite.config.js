@@ -71,6 +71,11 @@ export default defineConfig({
     postcss: './postcss.config.js',
   },
 
+  // Preview configuration
+  preview: {
+    allowedHosts: true,
+  },
+
   // Resolve configuration
   resolve: {
     alias: {
