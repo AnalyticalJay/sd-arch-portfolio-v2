@@ -298,6 +298,54 @@
     @apply bg-navy-medium text-white;
   }
 
+  /* Header Styles */
+  #main-header {
+    @apply bg-transparent;
+  }
+
+  #main-header.header-scrolled {
+    @apply bg-navy-dark/80 backdrop-blur-md border-b border-white/5;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    @apply relative;
+  }
+
+  .hero-background {
+    @apply absolute inset-0;
+  }
+
+  .hero-content {
+    @apply relative z-20;
+  }
+
+  .hero-headline {
+    @apply font-manrope font-bold;
+  }
+
+  .hero-subheading {
+    @apply font-inter;
+  }
+
+  .hero-description {
+    @apply font-inter;
+  }
+
+  .hero-globe {
+    @apply animate-pulse;
+    animation: floatGlobe 6s ease-in-out infinite;
+  }
+
+  @keyframes floatGlobe {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
   /* Section Headers */
   .section-header {
     @apply mb-16 text-center;

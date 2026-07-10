@@ -45,15 +45,13 @@ const initHeaderScrollEffect = (header) => {
 
     if (scrollY > scrollThreshold) {
       // Add scroll effect classes
-      if (!header.classList.contains('bg-navy/90')) {
-        header.classList.add('bg-navy/90', 'backdrop-blur-md', 'py-4');
-        header.classList.remove('py-6');
+      if (!header.classList.contains('header-scrolled')) {
+        header.classList.add('header-scrolled');
       }
     } else {
       // Remove scroll effect classes
-      if (header.classList.contains('bg-navy/90')) {
-        header.classList.remove('bg-navy/90', 'backdrop-blur-md', 'py-4');
-        header.classList.add('py-6');
+      if (header.classList.contains('header-scrolled')) {
+        header.classList.remove('header-scrolled');
       }
     }
 
