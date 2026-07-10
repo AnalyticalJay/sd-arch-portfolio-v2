@@ -3,112 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenV Group | Smart Technology. Seamless Solutions.</title>
-    <meta name="description" content="OpenV Group provides premium enterprise technology solutions across cybersecurity, digital growth, and business software.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <!-- Fonts -->
+    <!-- SEO & Meta Tags -->
+    <title>OpenV Group | Smart Technology. Seamless Solutions.</title>
+    <meta name="description" content="OpenV Group provides premium enterprise technology solutions across cybersecurity, digital growth, and business software. Three expert brands. One connected ecosystem.">
+    <meta name="keywords" content="enterprise technology, cybersecurity, digital growth, business software, South Africa">
+    <meta name="author" content="OpenV Group">
+    <meta name="theme-color" content="#07111C">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OpenV Group | Smart Technology. Seamless Solutions.">
+    <meta property="og:description" content="Three expert brands. One connected ecosystem. Empowering businesses across South Africa.">
+    <meta property="og:url" content="https://openv.co.za">
+    
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/css/main.css">
 </head>
 <body class="bg-white text-body font-inter">
-    <!-- Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6">
+    <!-- Skip to Main Content Link (Accessibility) -->
+    <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
+    
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6" role="banner">
         <div class="container-custom flex items-center justify-between">
-            <a href="/" class="flex items-center">
-                <img src="/assets/images/logo.svg" alt="OpenV Group Logo" class="h-8 w-auto">
+            <!-- Logo -->
+            <a href="/" class="flex items-center" aria-label="OpenV Group Home">
+                <img src="/assets/images/logo.svg" alt="OpenV Group Logo" class="h-8 w-auto" loading="eager">
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-8">
-                <a href="#" class="text-sm font-semibold text-white/80 hover:text-white transition-colors">ABOUT US</a>
-                <a href="#" class="text-sm font-semibold text-white/80 hover:text-white transition-colors">OUR COMPANIES</a>
-                <a href="#" class="text-sm font-semibold text-white/80 hover:text-white transition-colors">SOLUTIONS</a>
-                <a href="#" class="text-sm font-semibold text-white/80 hover:text-white transition-colors">INDUSTRIES</a>
-                <a href="#" class="text-sm font-semibold text-white/80 hover:text-white transition-colors">PARTNERS</a>
-                <a href="#" class="text-sm font-semibold text-white/80 hover:text-white transition-colors">INSIGHTS</a>
-                <a href="#" class="text-sm font-semibold text-white/80 hover:text-white transition-colors">CONTACT</a>
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8" aria-label="Main Navigation">
+                <a href="#about" class="text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200">ABOUT US</a>
+                <a href="#companies" class="text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200">OUR COMPANIES</a>
+                <a href="#solutions" class="text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200">SOLUTIONS</a>
+                <a href="#industries" class="text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200">INDUSTRIES</a>
+                <a href="#partners" class="text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200">PARTNERS</a>
+                <a href="#insights" class="text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200">INSIGHTS</a>
+                <a href="#contact" class="text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200">CONTACT</a>
             </nav>
 
+            <!-- Desktop CTA & Menu Button -->
             <div class="hidden lg:flex items-center space-x-6">
-                <a href="#" class="btn btn-primary px-6 py-2.5 text-sm">BOOK A CONSULTATION</a>
-                <button class="text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                <a href="#consultation" class="btn btn-primary px-6 py-2.5 text-sm">BOOK A CONSULTATION</a>
+                <button class="text-white hover:text-primary-green transition-colors duration-200" aria-label="Search" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                 </button>
             </div>
 
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="lg:hidden text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            <button 
+                id="mobile-menu-btn" 
+                class="lg:hidden text-white hover:text-primary-green transition-colors duration-200" 
+                aria-label="Toggle mobile menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-menu"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
             </button>
         </div>
+
+        <!-- Mobile Navigation Menu -->
+        <nav 
+            id="mobile-menu" 
+            class="hidden lg:hidden bg-navy/95 backdrop-blur-md border-t border-white/10" 
+            aria-label="Mobile Navigation"
+            role="navigation">
+            <div class="container-custom py-6 space-y-4">
+                <a href="#about" class="block text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200 py-2">ABOUT US</a>
+                <a href="#companies" class="block text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200 py-2">OUR COMPANIES</a>
+                <a href="#solutions" class="block text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200 py-2">SOLUTIONS</a>
+                <a href="#industries" class="block text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200 py-2">INDUSTRIES</a>
+                <a href="#partners" class="block text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200 py-2">PARTNERS</a>
+                <a href="#insights" class="block text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200 py-2">INSIGHTS</a>
+                <a href="#contact" class="block text-sm font-semibold text-white/80 hover:text-white transition-colors duration-200 py-2">CONTACT</a>
+                <div class="pt-4 border-t border-white/10">
+                    <a href="#consultation" class="btn btn-primary w-full text-center">BOOK A CONSULTATION</a>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <!-- Foundation Placeholder for Future Sections -->
-        <section class="min-h-screen bg-navy flex items-center justify-center text-center px-6">
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="min-h-screen bg-navy flex items-center justify-center text-center px-6 pt-32 pb-20" role="region" aria-label="Hero Section">
             <div class="max-w-3xl" data-animation="fade-in">
-                <h1 class="text-white text-5xl md:text-7xl mb-8">Architecture Foundation Ready</h1>
-                <p class="text-white/60 text-lg mb-12">This is the scalable core for the OpenV Group website. Built with Vite, Tailwind CSS, GSAP, and Lenis.</p>
+                <h1 class="text-white text-5xl md:text-6xl lg:text-7xl font-manrope font-bold mb-8 leading-tight">
+                    Architecture Foundation Ready
+                </h1>
+                <p class="text-white/60 text-lg md:text-xl mb-12 leading-relaxed">
+                    This is the scalable core for the OpenV Group website. Built with Vite, Tailwind CSS, GSAP, and Lenis for premium enterprise performance.
+                </p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#" class="btn btn-primary">EXPLORE THE GROUP</a>
-                    <a href="#" class="btn btn-ghost border border-white/20">VIEW DOCUMENTATION</a>
+                    <a href="#companies" class="btn btn-primary">EXPLORE THE GROUP</a>
+                    <a href="#documentation" class="btn btn-ghost border border-white/20 hover:border-white/40">VIEW DOCUMENTATION</a>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-navy py-20 border-t border-white/5">
+    <footer class="bg-navy py-20 border-t border-white/5" role="contentinfo">
         <div class="container-custom">
+            <!-- Footer Content Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
+                <!-- Company Info -->
                 <div class="lg:col-span-2">
-                    <img src="/assets/images/logo.svg" alt="OpenV Group Logo" class="h-8 w-auto mb-8">
-                    <p class="text-white/40 max-w-sm mb-8">Three expert brands. One connected ecosystem. Empowering businesses across South Africa to operate, grow and thrive.</p>
-                    <div class="flex space-x-4">
-                        <!-- Social Icons Placeholder -->
-                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary-green hover:border-primary-green transition-colors cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                        </div>
-                    </div>
+                    <img src="/assets/images/logo.svg" alt="OpenV Group Logo" class="h-8 w-auto mb-8" loading="lazy">
+                    <p class="text-white/40 max-w-sm mb-8 leading-relaxed">
+                        Three expert brands. One connected ecosystem. Empowering businesses across South Africa to operate, grow and thrive.
+                    </p>
+                    <!-- Social Links -->
+                    <nav class="flex space-x-4" aria-label="Social Media">
+                        <a 
+                            href="https://linkedin.com/company/openv-group" 
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary-green hover:border-primary-green transition-colors duration-200"
+                            aria-label="LinkedIn"
+                            rel="noopener noreferrer"
+                            target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </nav>
                 </div>
-                <div>
-                    <h4 class="text-white text-sm mb-6 uppercase tracking-wider">Quick Links</h4>
+
+                <!-- Quick Links -->
+                <nav aria-label="Quick Links">
+                    <h4 class="text-white text-sm font-semibold mb-6 uppercase tracking-wider">Quick Links</h4>
                     <ul class="space-y-4 text-sm text-white/40">
-                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Our Companies</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors duration-200">About Us</a></li>
+                        <li><a href="#companies" class="hover:text-white transition-colors duration-200">Our Companies</a></li>
+                        <li><a href="#solutions" class="hover:text-white transition-colors duration-200">Solutions</a></li>
                     </ul>
-                </div>
-                <div>
-                    <h4 class="text-white text-sm mb-6 uppercase tracking-wider">Our Companies</h4>
+                </nav>
+
+                <!-- Our Companies -->
+                <nav aria-label="Our Companies">
+                    <h4 class="text-white text-sm font-semibold mb-6 uppercase tracking-wider">Our Companies</h4>
                     <ul class="space-y-4 text-sm text-white/40">
-                        <li><a href="#" class="hover:text-white transition-colors">Open V Business Solutions</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">NextFour</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">ShiftBridge</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Open V Business Solutions</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">NextFour</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">ShiftBridge</a></li>
                     </ul>
-                </div>
+                </nav>
+
+                <!-- Contact -->
                 <div>
-                    <h4 class="text-white text-sm mb-6 uppercase tracking-wider">Contact</h4>
+                    <h4 class="text-white text-sm font-semibold mb-6 uppercase tracking-wider">Contact</h4>
                     <ul class="space-y-4 text-sm text-white/40">
-                        <li>Gqeberha (Head Office)<br>041 379 0550</li>
-                        <li>info@openv.co.za</li>
+                        <li>
+                            <span class="block font-semibold text-white/60">Gqeberha (Head Office)</span>
+                            <a href="tel:+27413790550" class="hover:text-white transition-colors duration-200">041 379 0550</a>
+                        </li>
+                        <li>
+                            <a href="mailto:info@openv.co.za" class="hover:text-white transition-colors duration-200">info@openv.co.za</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-white/20">
-                <p>&copy; 2026 Open V Group. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Terms & Conditions</a>
-                    <a href="#" class="hover:text-white">POPIA</a>
-                </div>
+
+            <!-- Footer Bottom -->
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-white/20 gap-4">
+                <p>&copy; 2026 OpenV Group. All rights reserved.</p>
+                <nav class="flex space-x-6" aria-label="Legal">
+                    <a href="#privacy" class="hover:text-white transition-colors duration-200">Privacy Policy</a>
+                    <a href="#terms" class="hover:text-white transition-colors duration-200">Terms & Conditions</a>
+                    <a href="#popia" class="hover:text-white transition-colors duration-200">POPIA</a>
+                </nav>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

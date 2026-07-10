@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================================
+   DESIGN TOKENS & CSS VARIABLES
+   ============================================================================ */
+
 :root {
-  /* Colors */
+  /* Colors - Premium Enterprise Palette */
   --color-navy: #07111C;
   --color-navy-medium: #0F1E33;
   --color-primary-green: #13C46B;
@@ -12,64 +16,350 @@
   --color-white: #FFFFFF;
   --color-body-text: #64748B;
   --color-border: #E5E7EB;
-
-  /* Spacing */
+  
+  /* Semantic Color Aliases */
+  --color-background: var(--color-white);
+  --color-surface: var(--color-navy);
+  --color-surface-alt: var(--color-navy-medium);
+  --color-text-primary: var(--color-navy);
+  --color-text-secondary: var(--color-body-text);
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-text-light: rgba(255, 255, 255, 0.4);
+  
+  /* Spacing System - 8pt Grid */
   --spacing-unit: 8px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 80px;
+  
+  /* Layout */
   --container-max-width: 1440px;
+  --container-padding: 24px;
+  
+  /* Typography */
+  --font-primary: 'Manrope', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Transitions */
+  --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
 }
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
 
 @layer base {
   html {
-    @apply antialiased scroll-smooth;
-    font-family: 'Inter', sans-serif;
-    color: var(--color-body-text);
-    background-color: var(--color-white);
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-manrope font-bold text-navy;
-    line-height: 1.2;
+    @apply antialiased;
+    scroll-behavior: smooth;
+    font-family: var(--font-secondary);
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
   }
 
   body {
     @apply min-h-screen overflow-x-hidden;
   }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-manrope font-bold;
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+  }
+
+  h1 {
+    @apply text-h1;
+  }
+
+  h2 {
+    @apply text-h2;
+  }
+
+  h3 {
+    @apply text-h3;
+  }
+
+  h4 {
+    @apply text-h4;
+  }
+
+  h5 {
+    @apply text-h5;
+  }
+
+  h6 {
+    @apply text-h6;
+  }
+
+  /* Paragraphs */
+  p {
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Links */
+  a {
+    @apply transition-colors duration-200;
+    color: var(--color-primary-green);
+
+    &:hover {
+      @apply underline;
+    }
+  }
+
+  /* Lists */
+  ul, ol {
+    @apply list-inside;
+  }
+
+  /* Code */
+  code {
+    @apply bg-light px-2 py-1 rounded font-mono text-sm;
+  }
+
+  /* Screen Reader Only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only.focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
 }
 
+/* ============================================================================
+   COMPONENT CLASSES
+   ============================================================================ */
+
 @layer components {
+  /* Container */
   .container-custom {
     @apply mx-auto px-6 lg:px-12 w-full;
     max-width: var(--container-max-width);
   }
 
-  /* Reusable Button Styles */
+  /* Buttons - Reusable Button System */
   .btn {
     @apply inline-flex items-center justify-center px-8 py-4 rounded-lg font-manrope font-semibold transition-all duration-300 ease-in-out cursor-pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    border: 2px solid transparent;
+
+    &:disabled {
+      @apply opacity-50 cursor-not-allowed;
+    }
+
+    &:focus-visible {
+      @apply outline-2 outline-offset-2;
+    }
   }
 
   .btn-primary {
-    @apply bg-primary-green text-white hover:bg-opacity-90;
+    @apply bg-primary-green text-white;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      @apply bg-opacity-90;
+    }
+
+    &:active:not(:disabled) {
+      @apply scale-95;
+    }
+  }
+
+  .btn-secondary {
+    @apply bg-navy-medium text-white;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      @apply bg-opacity-90;
+    }
+
+    &:active:not(:disabled) {
+      @apply scale-95;
+    }
   }
 
   .btn-outline {
-    @apply border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white;
+    @apply border-2 border-primary-green text-primary-green bg-transparent;
+
+    &:hover:not(:disabled) {
+      @apply bg-primary-green text-white;
+    }
+
+    &:active:not(:disabled) {
+      @apply scale-95;
+    }
   }
 
   .btn-ghost {
-    @apply text-white hover:text-primary-green;
+    @apply text-white bg-transparent;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      @apply text-primary-green;
+    }
+
+    &:active:not(:disabled) {
+      @apply scale-95;
+    }
   }
 
-  /* Reusable Card Styles */
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-10 py-5 text-lg;
+  }
+
+  /* Cards - Reusable Card System */
   .card-base {
-    @apply bg-white border border-border rounded-xl p-8 transition-all duration-300 hover:shadow-xl;
+    @apply bg-white border border-border rounded-xl p-8 transition-all duration-300;
+
+    &:hover {
+      @apply shadow-lg;
+    }
   }
 
   .card-dark {
-    @apply bg-navy-medium border border-white/10 rounded-xl p-8 transition-all duration-300 hover:border-primary-green/50;
+    @apply bg-navy-medium border border-white/10 rounded-xl p-8 transition-all duration-300;
+
+    &:hover {
+      @apply border-primary-green/50;
+    }
+  }
+
+  .card-interactive {
+    @apply cursor-pointer;
+
+    &:hover {
+      @apply -translate-y-1;
+    }
+  }
+
+  /* Badges & Pills */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+    background-color: var(--color-light-bg);
+    color: var(--color-text-primary);
+  }
+
+  .badge-primary {
+    @apply bg-primary-green/10 text-primary-green;
+  }
+
+  .badge-secondary {
+    @apply bg-accent-blue/10 text-accent-blue;
+  }
+
+  .badge-dark {
+    @apply bg-navy-medium text-white;
+  }
+
+  /* Section Headers */
+  .section-header {
+    @apply mb-16 text-center;
+  }
+
+  .section-header h2 {
+    @apply mb-6;
+  }
+
+  .section-header p {
+    @apply text-body text-lg max-w-2xl mx-auto;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-border;
+  }
+
+  .divider-light {
+    @apply border-t border-white/10;
+  }
+
+  /* Grid Utilities */
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+
+  /* Flex Utilities */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  /* Text Utilities */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary-green) 0%, var(--color-accent-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-truncate {
+    @apply overflow-hidden text-overflow-ellipsis whitespace-nowrap;
+  }
+
+  /* Visibility Utilities */
+  .hidden-mobile {
+    @apply hidden md:block;
+  }
+
+  .hidden-desktop {
+    @apply block md:hidden;
   }
 }
 
-/* Lenis Smooth Scroll Overrides */
+/* ============================================================================
+   LENIS SMOOTH SCROLL INTEGRATION
+   ============================================================================ */
+
 html.lenis {
   height: auto;
 }
@@ -88,4 +378,99 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE UTILITIES
+   ============================================================================ */
+
+@media (max-width: 640px) {
+  .container-custom {
+    @apply px-4;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container-custom {
+    @apply px-16;
+  }
 }
