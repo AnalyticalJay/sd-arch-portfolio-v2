@@ -5,7 +5,7 @@
  */
 
 import gsap from 'gsap';
-import { scrollController } from './scroll-controller';
+import { scrollController } from './scroll-controller-accessible';
 import { prefersReducedMotion, getAnimationDuration } from './performance-optimization-v2';
 
 /**

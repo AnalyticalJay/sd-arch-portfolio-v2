@@ -28,6 +28,10 @@ export const initPartnerMarquee = () => {
     const existingClones = marqueeContainer.querySelectorAll('.partner-marquee-content.is-clone');
     existingClones.forEach(c => c.remove());
 
+    // Ensure the container is a flex container for the clones to sit side-by-side
+    marqueeContainer.style.display = 'flex';
+    marqueeContainer.style.width = '100%';
+
     const clone = marqueeContent.cloneNode(true);
     clone.classList.add('is-clone');
     marqueeContainer.appendChild(clone);

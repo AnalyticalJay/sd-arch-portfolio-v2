@@ -241,7 +241,7 @@
     box-shadow: 0 8px 16px rgba(19, 196, 107, 0.25);
     
     &:hover:not(:disabled) {
-      @apply bg-transparent text-primary-green;
+      @apply bg-primary-green/90 text-navy;
       box-shadow: 0 12px 24px rgba(19, 196, 107, 0.35);
       transform: translateY(-2px);
     }
@@ -262,7 +262,7 @@
     box-shadow: 0 8px 16px rgba(27, 142, 255, 0.25);
     
     &:hover:not(:disabled) {
-      @apply bg-transparent text-accent-blue;
+      @apply bg-accent-blue/90 text-white;
       box-shadow: 0 12px 24px rgba(27, 142, 255, 0.35);
       transform: translateY(-2px);
     }
@@ -283,7 +283,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     
     &:hover:not(:disabled) {
-      @apply border-primary-green text-primary-green;
+      @apply border-primary-green bg-primary-green text-navy;
       box-shadow: 0 8px 16px rgba(19, 196, 107, 0.2);
       transform: translateY(-2px);
     }
@@ -322,7 +322,8 @@
 
   /* Cards - Reusable Card System */
   .card-premium {
-    @apply relative overflow-hidden bg-navy-medium/50 border border-white/10 rounded-xl p-8 transition-all duration-500 backdrop-blur-sm;
+    @apply relative overflow-hidden border border-white/10 rounded-xl p-8 transition-all duration-500 backdrop-blur-sm;
+    background-color: var(--color-navy-medium);
     
     &::before {
       content: '';
@@ -331,7 +332,9 @@
     }
 
     &:hover {
-      @apply border-primary-green/30 -translate-y-2 shadow-2xl shadow-primary-green/10;
+      @apply -translate-y-3;
+      border-color: var(--color-primary-green);
+      box-shadow: 0 20px 40px rgba(19, 196, 107, 0.15);
       &::before {
         @apply opacity-100;
       }
@@ -352,13 +355,13 @@
   }
 
   /* Service Cards */
-  #solutions .bg-white.p-10 {
-    @apply relative overflow-hidden border border-transparent rounded-lg transition-all duration-300 cursor-pointer;
+  #solutions .bg-white.p-8 {
+    @apply relative overflow-hidden border border-transparent transition-all duration-300 cursor-pointer;
   }
   
   /* Partner Cards */
-  #partners .bg-white.p-6 {
-    @apply relative overflow-hidden border border-transparent rounded-lg transition-all duration-300 cursor-pointer;
+  #partners .partner-card {
+    @apply relative overflow-hidden transition-all duration-300 cursor-pointer;
   }
   
   /* Industry Cards */
@@ -400,8 +403,10 @@
   }
 
   /* White background section headers */
-  .bg-white .section-header {
-    & p { @apply text-body; }
+  .bg-white .section-header,
+  .bg-light .section-header {
+    & h2 { @apply text-navy; }
+    & p { color: var(--color-body-text); }
   }
 
   /* Gradient Text */

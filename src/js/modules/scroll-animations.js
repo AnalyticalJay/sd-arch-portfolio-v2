@@ -43,6 +43,18 @@ export const initAdvancedScrollAnimations = () => {
         case 'scale-in':
           createScaleInAnimation(element, delay);
           break;
+        case 'reveal-text':
+          createTextRevealAnimation(element, { delay });
+          break;
+        case 'stagger-in':
+          createStaggerAnimation(element.children, { delay });
+          break;
+        case 'fade-left':
+          createFadeInLeftAnimation(element, delay);
+          break;
+        case 'fade-right':
+          createFadeInRightAnimation(element, delay);
+          break;
         default:
           break;
       }
@@ -135,6 +147,40 @@ const createSlideInRightAnimation = (element, delay = 0) => {
     },
     opacity: 0,
     x: 50,
+    duration: 0.8,
+    delay: delay,
+    ease: 'power2.out',
+  });
+};
+
+const createFadeInLeftAnimation = (element, delay = 0) => {
+  gsap.from(element, {
+    scrollTrigger: {
+      trigger: element,
+      start: 'top 85%',
+      end: 'top 50%',
+      toggleActions: 'play none none none',
+      markers: false,
+    },
+    opacity: 0,
+    x: -30,
+    duration: 0.8,
+    delay: delay,
+    ease: 'power2.out',
+  });
+};
+
+const createFadeInRightAnimation = (element, delay = 0) => {
+  gsap.from(element, {
+    scrollTrigger: {
+      trigger: element,
+      start: 'top 85%',
+      end: 'top 50%',
+      toggleActions: 'play none none none',
+      markers: false,
+    },
+    opacity: 0,
+    x: 30,
     duration: 0.8,
     delay: delay,
     ease: 'power2.out',

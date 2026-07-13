@@ -124,7 +124,7 @@ const animateSolutionsSection = () => {
   try {
     const section = document.querySelector('#solutions');
     const header = section?.querySelector('.section-header');
-    const solutionItems = section?.querySelectorAll('.bg-white.p-10');
+    const solutionItems = section?.querySelectorAll('.bg-white.p-8');
     const cta = section?.querySelector('.mt-16.text-center');
     
     if (!section) return;
@@ -175,7 +175,7 @@ const animateEcosystemSection = () => {
   try {
     const section = document.querySelector('#ecosystem');
     const header = section?.querySelector('.section-header');
-    const ecosystemSteps = section?.querySelectorAll('.grid.grid-cols-1.md\\:grid-cols-5 > div');
+    const ecosystemSteps = section?.querySelectorAll('.grid.grid-cols-1.md\\:grid-cols-5 > div, .grid.grid-cols-1.md\\:grid-cols-5 > .text-center');
     const connectionLine = section?.querySelector('.absolute.top-1\\/2.left-0.w-full');
     
     if (!section) return;
@@ -328,7 +328,7 @@ const animateIndustriesSection = () => {
  */
 const animateCtaSection = () => {
   try {
-    const section = document.querySelector('#cta');
+    const section = document.querySelector('#consultation');
     const content = section?.querySelector('.container-custom > .flex');
     const text = content?.querySelector('div:first-child');
     const actions = content?.querySelector('div:last-child');

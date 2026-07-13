@@ -71,28 +71,14 @@ const initButtonStaggerAnimations = () => {
 
 /**
  * Scroll-Triggered Button Animations
- * Trigger effects based on scroll position
+ * NOTE: Disabled to avoid duplicate ScrollTriggers with scroll-animations.js
+ * Button entrance animations are now handled globally via [data-animation] attributes
  */
 const initScrollTriggeredButtonAnimations = () => {
   try {
-    const buttons = document.querySelectorAll('.btn');
-
-    buttons.forEach((button) => {
-      ScrollTrigger.create({
-        trigger: button,
-        onEnter: () => {
-          gsap.to(button, {
-            opacity: 1,
-            duration: 0.3,
-            ease: 'power2.out',
-          });
-        },
-      });
-    });
-
-    console.log('[ButtonAnimations] ✓ Scroll-triggered button animations initialized');
+    console.log('[ButtonAnimations] Scroll-triggered button animations delegated to scroll-animations.js');
   } catch (error) {
-    console.error('[ButtonAnimations] Error initializing scroll-triggered animations:', error);
+    console.error('[ButtonAnimations] Error in scroll-triggered animations:', error);
   }
 };
 
@@ -140,7 +126,7 @@ export const initMobileOptimizations = () => {
   try {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    if (isTouchDevice()) {
+    if (isTouchDevice) {
       document.body.classList.add('touch-device');
     }
 
