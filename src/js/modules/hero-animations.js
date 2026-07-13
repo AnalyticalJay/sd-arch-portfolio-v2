@@ -45,7 +45,7 @@ export const initHeroAnimations = () => {
     }
 
     // Animate subheading
-    const subheading = document.querySelector('p.text-lg');
+    const subheading = document.querySelector('#hero p.text-lg, #hero p.text-2xl');
     if (subheading) {
       heroTimeline.from(subheading, {
         opacity: 0,
@@ -93,10 +93,14 @@ const animateHeadlineReveal = (headline, timeline) => {
   const text = headline.innerHTML;
   
   // Split by <br> tags and create spans for each line
-  const lines = text.split('<br>');
+  // We need to handle the nested <span> tag for "Stronger business."
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = text;
+  
+  const lines = tempDiv.innerHTML.split('<br>');
   
   headline.innerHTML = lines
-    .map(line => `<div class="overflow-hidden"><span class="inline-block">${line}</span></div>`)
+    .map(line => `<div class="overflow-hidden"><span class="inline-block">${line.trim()}</span></div>`)
     .join('');
 
   const lineSpans = headline.querySelectorAll('span');
@@ -288,7 +292,7 @@ export const createHeroEntranceTimeline = () => {
   }, 0.1);
 
   // Subheading entrance
-  timeline.from('p.text-lg', {
+  timeline.from('#hero p.text-lg, #hero p.text-2xl', {
     opacity: 0,
     y: 30,
     duration: 0.8,

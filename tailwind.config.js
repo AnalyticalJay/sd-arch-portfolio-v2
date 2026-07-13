@@ -32,6 +32,9 @@ export default {
         'h5': ['1.25rem', { lineHeight: '1.5', fontWeight: '600' }],
         'h6': ['1rem', { lineHeight: '1.5', fontWeight: '600' }],
       },
+      letterSpacing: {
+        'widest': '0.2em',
+      },
       spacing: {
         '18': '4.5rem',
         '22': '5.5rem',
@@ -45,6 +48,10 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      boxShadow: {
+        'glow-green': '0 0 20px rgba(19, 196, 107, 0.3)',
+        'glow-blue': '0 0 20px rgba(27, 142, 255, 0.3)',
       }
     },
   },

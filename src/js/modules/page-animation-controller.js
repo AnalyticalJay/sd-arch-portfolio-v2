@@ -54,34 +54,14 @@ class PageAnimationController {
 
   /**
    * Initialize generic animations that apply to all pages
-   * e.g. looking for data-animation attributes
+   * NOTE: Global [data-animation] processing is now handled by scroll-animations.js
+   * This method is kept for backwards compatibility but does nothing.
+   * Section-specific animations are handled by their respective modules.
    */
   initGlobalAnimations() {
-    // Entrance animations via data attributes
-    const animatedElements = document.querySelectorAll('[data-animation]');
-    
-    animatedElements.forEach(el => {
-      const type = el.dataset.animation;
-      const delay = parseFloat(el.dataset.animationDelay) || 0;
-      
-      switch (type) {
-        case 'fade-up':
-          animationFramework.fadeUp(el, { delay });
-          break;
-        case 'fade-in':
-          animationFramework.fadeUp(el, { y: 0, delay });
-          break;
-        case 'scale-in':
-          animationFramework.scale(el, { delay });
-          break;
-        case 'stagger-in':
-          const children = el.children;
-          if (children.length > 0) {
-            animationFramework.stagger(children, { delay });
-          }
-          break;
-      }
-    });
+    // Global animations are now handled by scroll-animations.js
+    // to avoid duplicate ScrollTriggers and conflicting animations
+    console.log('[PageAnimationController] Global animations delegated to scroll-animations.js');
   }
 
   /**

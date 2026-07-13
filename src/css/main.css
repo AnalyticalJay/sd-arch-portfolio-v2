@@ -241,7 +241,7 @@
     box-shadow: 0 8px 16px rgba(19, 196, 107, 0.25);
     
     &:hover:not(:disabled) {
-      @apply bg-transparent text-primary-green;
+      @apply bg-primary-green/90 text-navy;
       box-shadow: 0 12px 24px rgba(19, 196, 107, 0.35);
       transform: translateY(-2px);
     }
@@ -262,7 +262,7 @@
     box-shadow: 0 8px 16px rgba(27, 142, 255, 0.25);
     
     &:hover:not(:disabled) {
-      @apply bg-transparent text-accent-blue;
+      @apply bg-accent-blue/90 text-white;
       box-shadow: 0 12px 24px rgba(27, 142, 255, 0.35);
       transform: translateY(-2px);
     }
@@ -283,7 +283,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     
     &:hover:not(:disabled) {
-      @apply border-primary-green text-primary-green;
+      @apply border-primary-green bg-primary-green text-navy;
       box-shadow: 0 8px 16px rgba(19, 196, 107, 0.2);
       transform: translateY(-2px);
     }
@@ -322,7 +322,8 @@
 
   /* Cards - Reusable Card System */
   .card-premium {
-    @apply relative overflow-hidden bg-navy-medium/50 border border-white/10 rounded-xl p-8 transition-all duration-500 backdrop-blur-sm;
+    @apply relative overflow-hidden border border-white/10 rounded-xl p-8 transition-all duration-500 backdrop-blur-sm;
+    background-color: var(--color-navy-medium);
     
     &::before {
       content: '';
@@ -331,21 +332,36 @@
     }
 
     &:hover {
-      @apply border-primary-green/30 -translate-y-2 shadow-2xl shadow-primary-green/10;
+      @apply -translate-y-3;
+      border-color: var(--color-primary-green);
+      box-shadow: 0 20px 40px rgba(19, 196, 107, 0.15);
       &::before {
         @apply opacity-100;
       }
     }
   }
 
+  /* Brand Card Specific Glows */
+  #companies .card-premium:nth-child(1):hover {
+    box-shadow: 0 0 30px rgba(19, 196, 107, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  #companies .card-premium:nth-child(2):hover {
+    box-shadow: 0 0 30px rgba(27, 142, 255, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  #companies .card-premium:nth-child(3):hover {
+    box-shadow: 0 0 30px rgba(19, 196, 107, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
   /* Service Cards */
-  #solutions .bg-white.p-10 {
-    @apply relative overflow-hidden border border-transparent rounded-lg transition-all duration-300 cursor-pointer;
+  #solutions .bg-white.p-8 {
+    @apply relative overflow-hidden border border-transparent transition-all duration-300 cursor-pointer;
   }
   
   /* Partner Cards */
-  #partners .bg-white.p-6 {
-    @apply relative overflow-hidden border border-transparent rounded-lg transition-all duration-300 cursor-pointer;
+  #partners .partner-card {
+    @apply relative overflow-hidden transition-all duration-300 cursor-pointer;
   }
   
   /* Industry Cards */
@@ -384,6 +400,13 @@
     @apply mb-20 text-center max-w-3xl mx-auto;
     & h2 { @apply mb-6; }
     & p { @apply text-white/50 text-lg; }
+  }
+
+  /* White background section headers */
+  .bg-white .section-header,
+  .bg-light .section-header {
+    & h2 { @apply text-navy; }
+    & p { color: var(--color-body-text); }
   }
 
   /* Gradient Text */
@@ -504,6 +527,18 @@ body {
   }
 }
 
+/* Fade In Up Smooth Animation */
+@keyframes fadeInUpSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Fade In Down Animation */
 @keyframes fadeInDown {
   from {
@@ -544,7 +579,19 @@ body {
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scale In Smooth Animation */
+@keyframes scaleInSmooth {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
   }
   to {
     opacity: 1;
@@ -587,7 +634,7 @@ body {
 
 /* Button Hover Effects */
 .btn {
-  transition: all var(--transition-base);
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
   overflow: hidden;
 }
@@ -600,7 +647,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.1);
-  transition: left var(--transition-base);
+  transition: left 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: -1;
 }
 
@@ -610,12 +657,12 @@ body {
 
 /* Card Hover Effects */
 .card-premium {
-  transition: all var(--transition-base);
+  transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Link Hover Effects */
 a {
-  transition: color var(--transition-base);
+  transition: color 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 a:hover {
@@ -624,17 +671,17 @@ a:hover {
 
 /* Badge Animations */
 .badge {
-  transition: all var(--transition-base);
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Icon Animations */
 svg {
-  transition: all var(--transition-base);
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Header Animations */
 #main-header {
-  transition: all var(--transition-base);
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Section Header Animations */
@@ -652,7 +699,7 @@ svg {
 }
 
 [data-animation="fade-in-up"] {
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 [data-animation="fade-in-down"] {
@@ -668,7 +715,7 @@ svg {
 }
 
 [data-animation="scale-in"] {
-  animation: scaleIn 0.8s ease-out forwards;
+  animation: scaleInSmooth 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* Stagger Animation Delays */

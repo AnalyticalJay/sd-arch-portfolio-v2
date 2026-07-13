@@ -213,18 +213,19 @@ export const revealText = (target, options = {}) => {
   const element = typeof target === 'string' ? document.querySelector(target) : target;
   if (!element) return;
 
+  if (prefersReducedMotion()) {
+    return gsap.set(element, { opacity: 1, y: 0 });
+  }
+
   const config = getDefaults(options);
   const trigger = options.scrollTrigger !== false ? createScrollTrigger(element, options.scrollTrigger) : null;
 
-  // Simple character/word wrap if not already done
-  // For a truly premium feel, this usually involves Splitting.js or custom logic
-  // Here we'll do a simple line-by-line reveal if possible or just fade/up
   return gsap.from(element, {
     ...config,
     opacity: 0,
-    y: 20,
-    skewY: 2,
-    transformOrigin: "left top",
+    y: 60,
+    duration: 1.2,
+    ease: "power4.out",
     scrollTrigger: trigger,
   });
 };

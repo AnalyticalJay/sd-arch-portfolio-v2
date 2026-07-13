@@ -101,7 +101,7 @@ const initCompanyCardHovers = () => {
  */
 const initServiceCardHovers = () => {
   try {
-    const cards = document.querySelectorAll('#solutions .bg-white.p-10');
+    const cards = document.querySelectorAll('#solutions .bg-white.p-8');
 
     cards.forEach(card => {
       const icon = card.querySelector('svg');

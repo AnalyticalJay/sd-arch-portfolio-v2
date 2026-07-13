@@ -275,8 +275,10 @@ export const initInputFocusEffects = () => {
       });
 
       input.addEventListener('blur', () => {
+        // Detect if input is on a light background (contact form)
+        const isLightBg = input.closest('#contact') !== null;
         gsap.to(input, {
-          borderColor: 'rgba(255, 255, 255, 0.1)',
+          borderColor: isLightBg ? '#E5E7EB' : 'rgba(255, 255, 255, 0.1)',
           boxShadow: 'none',
           duration: 0.2,
         });

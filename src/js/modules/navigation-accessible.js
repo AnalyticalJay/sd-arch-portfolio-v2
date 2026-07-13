@@ -5,7 +5,7 @@
  */
 
 import gsap from 'gsap';
-import { scrollController } from './scroll-controller';
+import { scrollController } from './scroll-controller-accessible';
 import { prefersReducedMotion, getAnimationDuration } from './performance-optimization-v2';
 
 /**
@@ -75,7 +75,7 @@ const initHeaderScrollEffectGSAP = (header, logo) => {
         
         if (logo) {
           gsap.to(logo, {
-            height: '1.75rem',
+            height: '2rem',
             duration: animationDuration,
             ease: 'power2.out',
           });
@@ -96,7 +96,7 @@ const initHeaderScrollEffectGSAP = (header, logo) => {
         
         if (logo) {
           gsap.to(logo, {
-            height: '2rem',
+            height: '2.5rem',
             duration: animationDuration,
             ease: 'power2.out',
           });
@@ -332,22 +332,28 @@ export const initMobileMenuAccessible = () => {
    * Open menu
    */
   const openMenu = () => {
-    mobileMenu.style.display = 'block';
+    mobileMenu.style.display = 'flex';
+    mobileMenu.classList.remove('pointer-events-none');
+    mobileMenu.classList.remove('translate-y-full');
     
     if (prefersReducedMotion()) {
-      mobileMenu.style.height = 'auto';
       mobileMenu.style.opacity = '1';
     } else {
       gsap.to(mobileMenu, {
-        height: 'auto',
         opacity: 1,
         duration: menuDuration,
         ease: 'power3.out',
       });
       
+      // Animate burger to X
+      const spans = mobileMenuBtn.querySelectorAll('span');
+      gsap.to(spans[0], { y: 8, rotation: 45, duration: 0.3 });
+      gsap.to(spans[1], { opacity: 0, duration: 0.3 });
+      gsap.to(spans[2], { y: -8, rotation: -45, width: '1.5rem', duration: 0.3 });
+
       // Animate menu links staggered
       gsap.fromTo(mobileMenu.querySelectorAll('a'), 
-        { y: 20, opacity: 0 },
+        { y: 40, opacity: 0 },
         { y: 0, opacity: 1, duration: linkDuration, stagger: staggerDelay, ease: 'power2.out', delay: 0.2 }
       );
     }
@@ -368,20 +374,27 @@ export const initMobileMenuAccessible = () => {
    * Close menu
    */
   const closeMenu = () => {
+    mobileMenu.classList.add('pointer-events-none');
+    
     if (prefersReducedMotion()) {
-      mobileMenu.style.display = 'none';
-      mobileMenu.style.height = '0';
       mobileMenu.style.opacity = '0';
+      mobileMenu.classList.add('translate-y-full');
+      mobileMenu.style.display = 'none';
     } else {
       gsap.to(mobileMenu, {
-        height: 0,
         opacity: 0,
         duration: 0.4,
         ease: 'power3.in',
         onComplete: () => {
-          mobileMenu.style.display = 'none';
+          mobileMenu.classList.add('translate-y-full');
         }
       });
+
+      // Animate X back to burger
+      const spans = mobileMenuBtn.querySelectorAll('span');
+      gsap.to(spans[0], { y: 0, rotation: 0, duration: 0.3 });
+      gsap.to(spans[1], { opacity: 1, duration: 0.3 });
+      gsap.to(spans[2], { y: 0, rotation: 0, width: '1rem', duration: 0.3 });
     }
     
     mobileMenuBtn.setAttribute('aria-expanded', 'false');
