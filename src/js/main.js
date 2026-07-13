@@ -22,6 +22,8 @@ import { initAccessibleMicroInteractions } from './modules/micro-interactions-ac
 import { initAccessiblePagePolish, createAccessiblePreloader } from './modules/page-polish-accessible';
 import { initAccessibleCursorEffects } from './modules/cursor-effects-accessible';
 import { initAccessibleCardHoverEffects } from './modules/card-hover-accessible';
+import { initButtonEnhancements, handleReducedMotion } from './modules/button-enhancements';
+import { initButtonAnimations, initMobileOptimizations, initThemeVariations } from './modules/button-animations';
 import { initPartnerMarquee } from './modules/partner-marquee';
 
 /**
@@ -75,6 +77,17 @@ const initializeApp = () => {
     // Phase 6: Initialize micro-interactions
     console.log('[Main] → Initializing micro-interactions...');
     initAccessibleMicroInteractions();
+    
+    // Phase 6b: Initialize button enhancements
+    console.log('[Main] → Initializing button enhancements...');
+    initButtonEnhancements();
+    handleReducedMotion();
+    
+    // Phase 6c: Initialize button animations
+    console.log('[Main] → Initializing button animations...');
+    initButtonAnimations();
+    initMobileOptimizations();
+    initThemeVariations();
 
     // Phase 7: Initialize cursor effects
     console.log('[Main] → Initializing cursor effects...');
