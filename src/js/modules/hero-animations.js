@@ -61,16 +61,7 @@ export const initHeroAnimations = () => {
       }, 0.4);
     }
 
-    // Animate stats bar
-    const statsBar = document.querySelector('.absolute.bottom-0');
-    if (statsBar) {
-      heroTimeline.from(statsBar, {
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        ease: 'power2.out',
-      }, 0.3);
-    }
+    // Stats bar animation is now handled by section-animations.js for scroll trigger consistency
 
     // Background parallax on scroll
     const heroBg = document.querySelector('.absolute.inset-0 img');
@@ -299,13 +290,7 @@ export const createHeroEntranceTimeline = () => {
     stagger: 0.15,
   }, 0.4);
 
-  // Stats bar entrance
-  timeline.from('.absolute.bottom-0', {
-    opacity: 0,
-    y: 40,
-    duration: 0.8,
-    ease: 'power2.out',
-  }, 0.3);
+  // Stats bar entrance handled by section-animations.js
 
   return timeline;
 };

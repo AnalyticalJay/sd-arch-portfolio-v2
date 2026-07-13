@@ -6,6 +6,8 @@
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { animationFramework } from './animation-framework';
+import { AnimationConfig } from './animation-config';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +17,9 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export const initSectionAnimations = () => {
   try {
+    // Statistics section (Stats bar in Hero)
+    animateStatsBar();
+
     // Brands section
     animateBrandsSection();
     
@@ -33,9 +38,36 @@ export const initSectionAnimations = () => {
     // CTA section
     animateCtaSection();
 
+    // Footer section
+    animateFooterSection();
+
     console.log('[SectionAnimations] ✓ All section animations initialized');
   } catch (error) {
     console.error('[SectionAnimations] Error initializing section animations:', error);
+  }
+};
+
+/**
+ * Animate Stats Bar
+ * Entrance animation for the stats bar at the bottom of hero
+ */
+const animateStatsBar = () => {
+  try {
+    const statsBar = document.querySelector('.absolute.bottom-0.left-0.w-full.bg-navy-medium\\/80');
+    const statItems = statsBar?.querySelectorAll('.flex.items-center.space-x-4');
+
+    if (!statsBar || !statItems) return;
+
+    animationFramework.stagger(statItems, {
+      trigger: statsBar,
+      scrollTrigger: {
+        start: 'top 95%',
+      },
+      y: 20,
+      stagger: AnimationConfig.stagger.normal,
+    });
+  } catch (error) {
+    console.error('[SectionAnimations] Error animating stats bar:', error);
   }
 };
 
@@ -45,26 +77,33 @@ export const initSectionAnimations = () => {
  */
 const animateBrandsSection = () => {
   try {
-    const brandCards = document.querySelectorAll('#companies .card-premium');
+    const section = document.querySelector('#companies');
+    const header = section?.querySelector('.section-header');
+    const brandCards = section?.querySelectorAll('.card-premium');
     
-    if (brandCards.length === 0) return;
+    if (!section) return;
 
-    gsap.from(brandCards, {
-      scrollTrigger: {
-        trigger: '#companies',
-        start: 'top 80%',
-        end: 'top 50%',
-        toggleActions: 'play none none none',
-        markers: false,
-      },
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      ease: 'power2.out',
-      stagger: 0.15,
-    });
+    // Animate header
+    if (header) {
+      animationFramework.fadeUp(header, {
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+        },
+      });
+    }
 
-    console.log('[SectionAnimations] ✓ Brands section animations set');
+    // Animate cards
+    if (brandCards && brandCards.length > 0) {
+      animationFramework.stagger(brandCards, {
+        trigger: section,
+        scrollTrigger: {
+          start: 'top 70%',
+        },
+        y: 50,
+        stagger: AnimationConfig.stagger.medium,
+      });
+    }
   } catch (error) {
     console.error('[SectionAnimations] Error animating brands section:', error);
   }
@@ -76,41 +115,46 @@ const animateBrandsSection = () => {
  */
 const animateSolutionsSection = () => {
   try {
-    const solutionItems = document.querySelectorAll('#solutions .bg-white.p-10');
+    const section = document.querySelector('#solutions');
+    const header = section?.querySelector('.section-header');
+    const solutionItems = section?.querySelectorAll('.bg-white.p-10');
+    const cta = section?.querySelector('.mt-16.text-center');
     
-    if (solutionItems.length === 0) return;
+    if (!section) return;
 
-    // Animate section header
-    const sectionHeader = document.querySelector('#solutions .section-header');
-    if (sectionHeader) {
-      gsap.from(sectionHeader, {
+    // Animate header
+    if (header) {
+      animationFramework.fadeUp(header, {
         scrollTrigger: {
-          trigger: '#solutions',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
+          trigger: section,
+          start: 'top 80%',
         },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
       });
     }
 
     // Animate solution items with stagger
-    gsap.from(solutionItems, {
-      scrollTrigger: {
-        trigger: '#solutions',
-        start: 'top 75%',
-        toggleActions: 'play none none none',
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.6,
-      ease: 'power2.out',
-      stagger: 0.08,
-    });
+    if (solutionItems && solutionItems.length > 0) {
+      animationFramework.stagger(solutionItems, {
+        trigger: section,
+        scrollTrigger: {
+          start: 'top 70%',
+        },
+        scale: 0.95,
+        y: 30,
+        stagger: AnimationConfig.stagger.small,
+      });
+    }
 
-    console.log('[SectionAnimations] ✓ Solutions section animations set');
+    // Animate CTA button
+    if (cta) {
+      animationFramework.fadeUp(cta, {
+        scrollTrigger: {
+          trigger: cta,
+          start: 'top 90%',
+        },
+        y: 20,
+      });
+    }
   } catch (error) {
     console.error('[SectionAnimations] Error animating solutions section:', error);
   }
@@ -122,41 +166,48 @@ const animateSolutionsSection = () => {
  */
 const animateEcosystemSection = () => {
   try {
-    const ecosystemSteps = document.querySelectorAll('.grid.grid-cols-1.md\\:grid-cols-5 > div');
+    const section = document.querySelector('#ecosystem');
+    const header = section?.querySelector('.section-header');
+    const ecosystemSteps = section?.querySelectorAll('.grid.grid-cols-1.md\\:grid-cols-5 > div');
+    const connectionLine = section?.querySelector('.absolute.top-1\\/2.left-0.w-full');
     
-    if (ecosystemSteps.length === 0) return;
+    if (!section) return;
+
+    // Animate header
+    if (header) {
+      animationFramework.fadeUp(header, {
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+        },
+      });
+    }
 
     // Animate connection line
-    const connectionLine = document.querySelector('.absolute.top-1\\/2.left-0.w-full');
     if (connectionLine) {
       gsap.from(connectionLine, {
         scrollTrigger: {
-          trigger: connectionLine.closest('section'),
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+          trigger: section,
+          start: 'top 60%',
         },
         scaleX: 0,
         transformOrigin: 'left center',
-        duration: 1,
-        ease: 'power2.out',
+        duration: AnimationConfig.duration.slow,
+        ease: AnimationConfig.ease.inOut,
       });
     }
 
     // Animate steps
-    gsap.from(ecosystemSteps, {
-      scrollTrigger: {
-        trigger: ecosystemSteps[0].closest('section'),
-        start: 'top 75%',
-        toggleActions: 'play none none none',
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.8,
-      ease: 'power2.out',
-      stagger: 0.12,
-    });
-
-    console.log('[SectionAnimations] ✓ Ecosystem section animations set');
+    if (ecosystemSteps && ecosystemSteps.length > 0) {
+      animationFramework.stagger(ecosystemSteps, {
+        trigger: section,
+        scrollTrigger: {
+          start: 'top 60%',
+        },
+        y: 40,
+        stagger: AnimationConfig.stagger.medium,
+      });
+    }
   } catch (error) {
     console.error('[SectionAnimations] Error animating ecosystem section:', error);
   }
@@ -168,60 +219,47 @@ const animateEcosystemSection = () => {
  */
 const animatePartnersSection = () => {
   try {
-    const partnerLogos = document.querySelectorAll('#partners .bg-white.p-6');
+    const section = document.querySelector('#partners');
+    const header = section?.querySelector('.section-header');
+    const partnerLogos = section?.querySelectorAll('.bg-white.p-6');
+    const viewAll = section?.querySelector('.text-center:last-child');
     
-    if (partnerLogos.length === 0) return;
+    if (!section) return;
 
-    // Animate section header
-    const sectionHeader = document.querySelector('#partners .section-header');
-    if (sectionHeader) {
-      gsap.from(sectionHeader, {
+    // Animate header
+    if (header) {
+      animationFramework.fadeUp(header, {
         scrollTrigger: {
-          trigger: '#partners',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
+          trigger: section,
+          start: 'top 80%',
         },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
       });
     }
 
     // Animate partner logos
-    gsap.from(partnerLogos, {
-      scrollTrigger: {
-        trigger: '#partners',
-        start: 'top 75%',
-        toggleActions: 'play none none none',
-      },
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.6,
-      ease: 'power2.out',
-      stagger: 0.08,
-    });
-
-    // Add hover effect to partner logos
-    partnerLogos.forEach(logo => {
-      logo.addEventListener('mouseenter', () => {
-        gsap.to(logo, {
-          scale: 1.1,
-          duration: 0.3,
-          ease: 'power2.out',
-        });
+    if (partnerLogos && partnerLogos.length > 0) {
+      animationFramework.stagger(partnerLogos, {
+        trigger: section,
+        scrollTrigger: {
+          start: 'top 70%',
+        },
+        scale: 0.8,
+        y: 20,
+        ease: 'back.out(1.7)',
+        stagger: AnimationConfig.stagger.small,
       });
+    }
 
-      logo.addEventListener('mouseleave', () => {
-        gsap.to(logo, {
-          scale: 1,
-          duration: 0.3,
-          ease: 'power2.out',
-        });
+    // Animate "View All" link
+    if (viewAll) {
+      animationFramework.fadeUp(viewAll, {
+        scrollTrigger: {
+          trigger: viewAll,
+          start: 'top 95%',
+        },
+        y: 10,
       });
-    });
-
-    console.log('[SectionAnimations] ✓ Partners section animations set');
+    }
   } catch (error) {
     console.error('[SectionAnimations] Error animating partners section:', error);
   }
@@ -233,68 +271,45 @@ const animatePartnersSection = () => {
  */
 const animateIndustriesSection = () => {
   try {
-    const industryCards = document.querySelectorAll('#industries .text-center.group');
+    const section = document.querySelector('#industries');
+    const header = section?.querySelector('.section-header');
+    const industryCards = section?.querySelectorAll('.text-center.group');
+    const viewAll = section?.querySelector('.text-center:last-child');
     
-    if (industryCards.length === 0) return;
+    if (!section) return;
 
-    // Animate section header
-    const sectionHeader = document.querySelector('#industries .section-header');
-    if (sectionHeader) {
-      gsap.from(sectionHeader, {
+    // Animate header
+    if (header) {
+      animationFramework.fadeUp(header, {
         scrollTrigger: {
-          trigger: '#industries',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
+          trigger: section,
+          start: 'top 80%',
         },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
       });
     }
 
     // Animate industry cards
-    gsap.from(industryCards, {
-      scrollTrigger: {
-        trigger: '#industries',
-        start: 'top 75%',
-        toggleActions: 'play none none none',
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.6,
-      ease: 'power2.out',
-      stagger: 0.08,
-    });
-
-    // Add icon hover effect
-    industryCards.forEach(card => {
-      const icon = card.querySelector('svg');
-      
-      card.addEventListener('mouseenter', () => {
-        if (icon) {
-          gsap.to(icon, {
-            scale: 1.2,
-            color: '#13C46B',
-            duration: 0.3,
-            ease: 'power2.out',
-          });
-        }
+    if (industryCards && industryCards.length > 0) {
+      animationFramework.stagger(industryCards, {
+        trigger: section,
+        scrollTrigger: {
+          start: 'top 70%',
+        },
+        y: 40,
+        stagger: AnimationConfig.stagger.normal,
       });
+    }
 
-      card.addEventListener('mouseleave', () => {
-        if (icon) {
-          gsap.to(icon, {
-            scale: 1,
-            color: 'rgba(15, 30, 51, 0.2)',
-            duration: 0.3,
-            ease: 'power2.out',
-          });
-        }
+    // Animate "View All" link
+    if (viewAll) {
+      animationFramework.fadeUp(viewAll, {
+        scrollTrigger: {
+          trigger: viewAll,
+          start: 'top 95%',
+        },
+        y: 10,
       });
-    });
-
-    console.log('[SectionAnimations] ✓ Industries section animations set');
+    }
   } catch (error) {
     console.error('[SectionAnimations] Error animating industries section:', error);
   }
@@ -306,75 +321,78 @@ const animateIndustriesSection = () => {
  */
 const animateCtaSection = () => {
   try {
-    const ctaSection = document.querySelector('.relative.py-32.bg-navy');
+    const section = document.querySelector('#cta');
+    const content = section?.querySelector('.container-custom > .flex');
+    const text = content?.querySelector('div:first-child');
+    const actions = content?.querySelector('div:last-child');
     
-    if (!ctaSection) return;
+    if (!section) return;
 
-    const ctaContent = ctaSection.querySelector('.flex.flex-col');
-    const ctaText = ctaContent?.querySelector('div:first-child');
-    const ctaButtons = ctaContent?.querySelector('div:last-child');
-
-    // Animate CTA text
-    if (ctaText) {
-      gsap.from(ctaText, {
+    // Animate text from left
+    if (text) {
+      animationFramework.fadeLeft(text, {
         scrollTrigger: {
-          trigger: ctaSection,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+          trigger: section,
+          start: 'top 75%',
         },
-        opacity: 0,
         x: -50,
-        duration: 0.8,
-        ease: 'power2.out',
+        duration: AnimationConfig.duration.slow,
       });
     }
 
-    // Animate CTA buttons
-    if (ctaButtons) {
-      gsap.from(ctaButtons, {
+    // Animate actions from right
+    if (actions) {
+      animationFramework.fadeRight(actions, {
         scrollTrigger: {
-          trigger: ctaSection,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+          trigger: section,
+          start: 'top 75%',
         },
-        opacity: 0,
         x: 50,
-        duration: 0.8,
-        ease: 'power2.out',
+        duration: AnimationConfig.duration.slow,
       });
     }
-
-    console.log('[SectionAnimations] ✓ CTA section animations set');
   } catch (error) {
     console.error('[SectionAnimations] Error animating CTA section:', error);
   }
 };
 
 /**
- * Animate Section Headers
- * Generic section header animations
+ * Animate Footer Section
+ * Entrance animations for footer content
  */
-export const animateSectionHeaders = () => {
+const animateFooterSection = () => {
   try {
-    const sectionHeaders = document.querySelectorAll('.section-header');
+    const footer = document.querySelector('footer');
+    const footerGrid = footer?.querySelector('.grid');
+    const footerBottom = footer?.querySelector('.pt-12.border-t');
+    
+    if (!footer) return;
 
-    sectionHeaders.forEach(header => {
-      gsap.from(header, {
+    // Animate grid columns
+    if (footerGrid) {
+      animationFramework.stagger(footerGrid.children, {
+        trigger: footer,
         scrollTrigger: {
-          trigger: header,
           start: 'top 85%',
-          toggleActions: 'play none none none',
         },
-        opacity: 0,
         y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
+        stagger: AnimationConfig.stagger.normal,
       });
-    });
+    }
 
-    console.log('[SectionAnimations] ✓ Section headers animations set');
+    // Animate footer bottom bar
+    if (footerBottom) {
+      animationFramework.fadeUp(footerBottom, {
+        scrollTrigger: {
+          trigger: footerBottom,
+          start: 'top 95%',
+        },
+        y: 0,
+        duration: AnimationConfig.duration.slow,
+      });
+    }
   } catch (error) {
-    console.error('[SectionAnimations] Error animating section headers:', error);
+    console.error('[SectionAnimations] Error animating footer section:', error);
   }
 };
 
@@ -390,7 +408,8 @@ export const addCardHoverEffects = () => {
       card.addEventListener('mouseenter', () => {
         gsap.to(card, {
           y: -12,
-          boxShadow: '0 20px 40px rgba(19, 196, 107, 0.2)',
+          borderColor: 'rgba(19, 196, 107, 0.3)',
+          backgroundColor: 'rgba(15, 30, 51, 0.8)',
           duration: 0.4,
           ease: 'power2.out',
         });
@@ -399,14 +418,13 @@ export const addCardHoverEffects = () => {
       card.addEventListener('mouseleave', () => {
         gsap.to(card, {
           y: 0,
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          borderColor: 'rgba(255, 255, 255, 0.05)',
+          backgroundColor: 'rgba(15, 30, 51, 0.4)',
           duration: 0.4,
           ease: 'power2.out',
         });
       });
     });
-
-    console.log('[SectionAnimations] ✓ Card hover effects added');
   } catch (error) {
     console.error('[SectionAnimations] Error adding card hover effects:', error);
   }
@@ -417,7 +435,6 @@ export const addCardHoverEffects = () => {
  */
 export const sectionAnimations = {
   initSectionAnimations,
-  animateSectionHeaders,
   addCardHoverEffects,
 };
 

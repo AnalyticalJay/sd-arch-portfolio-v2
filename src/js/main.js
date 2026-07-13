@@ -48,11 +48,11 @@ const initializeApp = () => {
     animateHeroStats();
     animateCtaButtonHover();
 
-    // Phase 5: Initialize advanced scroll animations
+    // Phase 5: Initialize advanced scroll animations (data-attribute based)
     console.log('[Main] → Initializing advanced scroll animations...');
     initAdvancedScrollAnimations();
     
-    // Phase 5b: Initialize section animations
+    // Phase 5b: Initialize section-specific animations
     console.log('[Main] → Initializing section animations...');
     initSectionAnimations();
     addCardHoverEffects();
