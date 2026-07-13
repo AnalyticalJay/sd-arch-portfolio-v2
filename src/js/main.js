@@ -17,32 +17,31 @@ const initGlobalAnimations = () => {
     // Fade In animations
     const fadeElements = document.querySelectorAll('[data-animation="fade-in"]');
     fadeElements.forEach((el) => {
-      animations.fadeIn(el);
+      animations.fadeIn(el, {
+        delay: parseFloat(el.dataset.delay) || 0
+      });
     });
 
     // Fade In Up animations
     const fadeUpElements = document.querySelectorAll('[data-animation="fade-in-up"]');
     fadeUpElements.forEach((el) => {
-      animations.fadeInUp(el);
+      animations.fadeInUp(el, {
+        delay: parseFloat(el.dataset.delay) || 0
+      });
     });
 
-    // Slide In Left animations
-    const slideLeftElements = document.querySelectorAll('[data-animation="slide-in-left"]');
-    slideLeftElements.forEach((el) => {
-      animations.slideInLeft(el);
+    // Stats Counter Animation
+    const statsNumbers = document.querySelectorAll('.text-3xl.font-manrope');
+    statsNumbers.forEach((stat) => {
+      const targetValue = parseInt(stat.textContent);
+      if (!isNaN(targetValue)) {
+        animations.animateCounter(stat, targetValue);
+      }
     });
 
-    // Slide In Right animations
-    const slideRightElements = document.querySelectorAll('[data-animation="slide-in-right"]');
-    slideRightElements.forEach((el) => {
-      animations.slideInRight(el);
-    });
-
-    // Scale In animations
-    const scaleElements = document.querySelectorAll('[data-animation="scale-in"]');
-    scaleElements.forEach((el) => {
-      animations.scaleIn(el);
-    });
+    // Add Hover Effects to Premium Cards
+    animations.addHoverScale('.card-premium', 1.02);
+    
   } catch (error) {
     console.error('[Main] Error initializing global animations:', error);
   }
@@ -56,10 +55,7 @@ const initializeApp = () => {
   try {
     // Initialize Smooth Scroll
     const lenis = initScroll();
-    if (!lenis) {
-      console.warn('[Main] Lenis initialization failed, continuing without smooth scroll');
-    }
-
+    
     // Initialize Navigation
     initNavigation();
 
@@ -69,8 +65,7 @@ const initializeApp = () => {
     // Refresh ScrollTriggers after all elements are initialized
     refreshScrollTriggers();
 
-    // Log successful initialization
-    console.log('[Main] ✓ OpenV Group Foundation Initialized');
+    console.log('[Main] ✓ OpenV Group Production Ready');
   } catch (error) {
     console.error('[Main] Error during initialization:', error);
   }
@@ -78,7 +73,6 @@ const initializeApp = () => {
 
 /**
  * Cleanup on Page Unload
- * Ensures proper cleanup of resources
  */
 const cleanupOnUnload = () => {
   try {
@@ -89,34 +83,12 @@ const cleanupOnUnload = () => {
   }
 };
 
-/**
- * Handle DOM Content Loaded
- */
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
-  // DOM is already loaded
   initializeApp();
 }
 
-/**
- * Handle Page Unload
- */
 window.addEventListener('beforeunload', cleanupOnUnload);
 
-/**
- * Handle Visibility Change
- * Pause animations when tab is hidden
- */
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    // Pause animations when tab is hidden
-    animations.killAllAnimations();
-  } else {
-    // Resume when tab is visible
-    refreshScrollTriggers();
-  }
-});
-
-// Export for external use if needed
 export { initializeApp, cleanupOnUnload };

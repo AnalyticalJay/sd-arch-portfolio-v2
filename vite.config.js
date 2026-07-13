@@ -4,10 +4,11 @@ export default defineConfig({
   base: './',
   // Server configuration
   server: {
-    port: 5173,
+    port: 3000,
     strictPort: false,
     open: true,
     hmr: true,
+    allowedHosts: true,
   },
 
   // Build configuration
