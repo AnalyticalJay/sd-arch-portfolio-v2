@@ -30,7 +30,7 @@ export const initSectionAnimations = () => {
     animateEcosystemSection();
     
     // Partners section
-    animatePartnersSection();
+    // animatePartnersSection(); // Disabled in favor of marquee module
     
     // Industries section
     animateIndustriesSection();

@@ -197,7 +197,7 @@ const initServiceCardHovers = () => {
  */
 const initPartnerCardHovers = () => {
   try {
-    const cards = document.querySelectorAll('#partners .bg-white.p-6');
+    const cards = document.querySelectorAll('.partner-card');
 
     cards.forEach(card => {
       const img = card.querySelector('img');
@@ -207,21 +207,21 @@ const initPartnerCardHovers = () => {
 
       // Lift effect
       hoverTimeline.to(card, {
-        y: -10,
+        y: -12,
         duration: 0.4,
         ease: 'power2.out',
       }, 0);
 
-      // Shadow transition
+      // Shadow & Glow transition
       hoverTimeline.to(card, {
-        boxShadow: '0 16px 32px rgba(19, 196, 107, 0.15), 0 0 12px rgba(19, 196, 107, 0.1)',
+        boxShadow: '0 20px 40px rgba(19, 196, 107, 0.2), 0 0 25px rgba(19, 196, 107, 0.15)',
         duration: 0.4,
         ease: 'power2.out',
       }, 0);
 
       // Border highlight
       hoverTimeline.to(card, {
-        borderColor: 'rgba(19, 196, 107, 0.2)',
+        borderColor: 'rgba(19, 196, 107, 0.4)',
         borderWidth: '1px',
         duration: 0.4,
         ease: 'power2.out',
@@ -230,19 +230,12 @@ const initPartnerCardHovers = () => {
       // Image scale and grayscale removal
       if (img) {
         hoverTimeline.to(img, {
-          scale: 1.08,
+          scale: 1.1,
           filter: 'grayscale(0%)',
           duration: 0.4,
           ease: 'power2.out',
         }, 0);
       }
-
-      // Glow effect
-      hoverTimeline.to(card, {
-        boxShadow: '0 16px 32px rgba(19, 196, 107, 0.15), 0 0 20px rgba(19, 196, 107, 0.12)',
-        duration: 0.4,
-        ease: 'power2.out',
-      }, 0);
 
       // Mouse enter
       card.addEventListener('mouseenter', () => {

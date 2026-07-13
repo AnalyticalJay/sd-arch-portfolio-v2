@@ -563,6 +563,29 @@ svg {
   animation-delay: 0.4s;
 }
 
+/* Partner Marquee Styles */
+.partner-marquee-container {
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.partner-marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  padding-right: 2rem; /* Ensure gap between original and clone */
+}
+
+.partner-card {
+  flex-shrink: 0;
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 1;
+}
+
+.partner-card:hover {
+  z-index: 10;
+}
+
 /* Reduced Motion Styles */
 .reduce-motion * {
   animation-duration: 0.01ms !important;

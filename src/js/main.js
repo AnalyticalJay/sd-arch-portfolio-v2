@@ -19,6 +19,7 @@ import { initMicroInteractions, initInputFocusEffects } from './modules/micro-in
 import { initPagePolish, createPreloader, addPageFadeTransition, initScrollToTopButton } from './modules/page-polish';
 import { initCursorEffects } from './modules/cursor-effects';
 import { initCardHoverEffects } from './modules/card-hover';
+import { initPartnerMarquee } from './modules/partner-marquee';
 import { initPerformanceOptimizations } from './modules/performance-optimization';
 
 /**
@@ -61,6 +62,10 @@ const initializeApp = () => {
     // Phase 5c: Initialize enhanced card hover effects
     console.log('[Main] → Initializing enhanced card hover effects...');
     initCardHoverEffects();
+    
+    // Phase 5d: Initialize partner marquee
+    console.log('[Main] → Initializing partner marquee...');
+    initPartnerMarquee();
 
     // Phase 6: Initialize micro-interactions
     console.log('[Main] → Initializing micro-interactions...');
