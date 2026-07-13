@@ -12,7 +12,8 @@ import { scrollToElement } from './scroll-enhanced';
  * Sets up header effects, smooth scrolling, and micro-interactions
  */
 export const initEnhancedNavigation = () => {
-  const header = document.querySelector('header');
+  const header = document.querySelector('#main-header');
+  const logo = header?.querySelector('img');
   
   if (!header) {
     console.warn('[EnhancedNav] Header element not found');
@@ -20,7 +21,7 @@ export const initEnhancedNavigation = () => {
   }
 
   // Initialize header scroll effect with GSAP
-  initHeaderScrollEffectGSAP(header);
+  initHeaderScrollEffectGSAP(header, logo);
   
   // Initialize smooth anchor navigation
   initSmoothAnchorNavigation();
@@ -31,15 +32,22 @@ export const initEnhancedNavigation = () => {
   // Initialize button interactions
   initButtonInteractions();
   
+  // Initialize Mobile Menu
+  initMobileMenuEnhanced();
+  
+  // Initialize Scroll Spy
+  initScrollSpy();
+  
   console.log('[EnhancedNav] ✓ Premium navigation initialized');
 };
 
 /**
  * Header Scroll Effect with GSAP
- * Smooth background and backdrop blur transition
+ * Smooth background, backdrop blur, and logo resize transition
  * @param {HTMLElement} header - Header element
+ * @param {HTMLElement} logo - Logo element
  */
-const initHeaderScrollEffectGSAP = (header) => {
+const initHeaderScrollEffectGSAP = (header, logo) => {
   let lastScrollY = 0;
   let ticking = false;
   const scrollThreshold = 50;
@@ -52,25 +60,45 @@ const initHeaderScrollEffectGSAP = (header) => {
     // Only animate when state changes
     if (isScrolled !== wasScrolled) {
       if (isScrolled) {
-        // Scroll down - add background
+        // Scroll down - add background and resize logo
         gsap.to(header, {
-          backgroundColor: 'rgba(7, 17, 28, 0.8)',
-          backdropFilter: 'blur(12px)',
-          borderBottomColor: 'rgba(255, 255, 255, 0.05)',
-          duration: 0.4,
+          backgroundColor: 'rgba(7, 17, 28, 0.85)',
+          backdropFilter: 'blur(16px)',
+          borderBottomColor: 'rgba(255, 255, 255, 0.08)',
+          paddingTop: '1rem',
+          paddingBottom: '1rem',
+          duration: 0.5,
           ease: 'power2.out',
         });
         
+        if (logo) {
+          gsap.to(logo, {
+            height: '1.75rem',
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+        }
+        
         header.classList.add('header-scrolled');
       } else {
-        // Scroll up - remove background
+        // Scroll up - remove background and reset logo
         gsap.to(header, {
           backgroundColor: 'rgba(7, 17, 28, 0)',
           backdropFilter: 'blur(0px)',
           borderBottomColor: 'rgba(255, 255, 255, 0)',
-          duration: 0.4,
+          paddingTop: '1.5rem',
+          paddingBottom: '1.5rem',
+          duration: 0.5,
           ease: 'power2.out',
         });
+        
+        if (logo) {
+          gsap.to(logo, {
+            height: '2rem',
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+        }
         
         header.classList.remove('header-scrolled');
       }
@@ -87,7 +115,6 @@ const initHeaderScrollEffectGSAP = (header) => {
     }
   };
 
-  // Use passive event listener for better performance
   window.addEventListener('scroll', onScroll, { passive: true });
 };
 
@@ -96,107 +123,86 @@ const initHeaderScrollEffectGSAP = (header) => {
  * Smooth scroll to anchor links with GSAP
  */
 const initSmoothAnchorNavigation = () => {
-  // Get all anchor links
   const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
   anchorLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      
-      // Skip if href is just "#"
       if (href === '#') return;
       
       const target = document.querySelector(href);
-      
       if (target) {
         e.preventDefault();
         
-        // Calculate offset (header height + padding)
-        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-        const offset = headerHeight + 20;
+        const headerHeight = document.querySelector('#main-header')?.offsetHeight || 80;
+        const offset = headerHeight;
         
-        // Use enhanced scroll
         scrollToElement(target, offset, {
           duration: 1.2,
+          ease: 'power4.inOut'
         });
-        
-        // Update active state
-        updateActiveNavLink(href);
       }
     });
   });
 };
 
 /**
- * Update Active Navigation Link
- * Highlight current section in navigation
- * @param {string} activeHref - Active link href
- */
-const updateActiveNavLink = (activeHref) => {
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  
-  navLinks.forEach(link => {
-    const isActive = link.getAttribute('href') === activeHref;
-    
-    if (isActive) {
-      gsap.to(link, {
-        color: '#13C46B',
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-      link.classList.add('active');
-    } else {
-      gsap.to(link, {
-        color: 'rgba(255, 255, 255, 0.7)',
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-      link.classList.remove('active');
-    }
-  });
-};
-
-/**
  * Navigation Link Hover Effects
- * Premium hover state animations
+ * Premium hover state animations with underline
  */
 const initNavigationLinkEffects = () => {
-  const navLinks = document.querySelectorAll('nav a');
+  const navLinks = document.querySelectorAll('nav:not(#mobile-menu) a');
 
   navLinks.forEach(link => {
-    // Create hover timeline
-    const hoverTimeline = gsap.timeline({ paused: true });
+    // Skip CTA buttons
+    if (link.classList.contains('btn')) return;
 
-    hoverTimeline.to(link, {
-      color: '#13C46B',
-      duration: 0.3,
-      ease: 'power2.out',
-    }, 0);
+    // Create underline element
+    const underline = document.createElement('span');
+    underline.className = 'nav-link-underline';
+    link.style.position = 'relative';
+    link.appendChild(underline);
 
-    // Mouse enter
-    link.addEventListener('mouseenter', () => {
-      hoverTimeline.play();
+    // Initial styles for underline
+    gsap.set(underline, {
+      position: 'absolute',
+      bottom: '-4px',
+      left: 0,
+      width: '0%',
+      height: '2px',
+      backgroundColor: '#13C46B',
+      transformOrigin: 'left',
     });
 
-    // Mouse leave
+    // Hover timeline
+    const hoverTimeline = gsap.timeline({ paused: true });
+    hoverTimeline.to(underline, {
+      width: '100%',
+      duration: 0.4,
+      ease: 'power2.out',
+    });
+
+    link.addEventListener('mouseenter', () => hoverTimeline.play());
     link.addEventListener('mouseleave', () => {
-      hoverTimeline.reverse();
+      if (!link.classList.contains('active')) {
+        hoverTimeline.reverse();
+      }
     });
   });
 };
 
 /**
  * Button Interactions
- * Premium button hover and click effects
+ * Premium CTA hover animations
  */
 const initButtonInteractions = () => {
   const buttons = document.querySelectorAll('.btn');
 
   buttons.forEach(button => {
-    // Hover effect
     button.addEventListener('mouseenter', () => {
       gsap.to(button, {
-        scale: 1.05,
+        y: -2,
+        boxShadow: '0 10px 20px -5px rgba(19, 196, 107, 0.3)',
         duration: 0.3,
         ease: 'power2.out',
       });
@@ -204,25 +210,9 @@ const initButtonInteractions = () => {
 
     button.addEventListener('mouseleave', () => {
       gsap.to(button, {
-        scale: 1,
+        y: 0,
+        boxShadow: '0 0px 0px 0px rgba(19, 196, 107, 0)',
         duration: 0.3,
-        ease: 'power2.out',
-      });
-    });
-
-    // Click effect
-    button.addEventListener('mousedown', () => {
-      gsap.to(button, {
-        scale: 0.95,
-        duration: 0.1,
-        ease: 'power2.out',
-      });
-    });
-
-    button.addEventListener('mouseup', () => {
-      gsap.to(button, {
-        scale: 1.05,
-        duration: 0.2,
         ease: 'power2.out',
       });
     });
@@ -230,40 +220,38 @@ const initButtonInteractions = () => {
 };
 
 /**
- * Add Scroll Spy
+ * Scroll Spy
  * Update active nav link based on scroll position
  */
 export const initScrollSpy = () => {
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const navLinks = document.querySelectorAll('nav:not(#mobile-menu) a[href^="#"]');
 
   const handleScroll = () => {
     let current = '';
+    const scrollPosition = window.scrollY + 150;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.clientHeight;
       
-      if (window.scrollY >= sectionTop - 200) {
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
         current = section.getAttribute('id');
       }
     });
 
     navLinks.forEach(link => {
       const href = link.getAttribute('href');
+      const underline = link.querySelector('.nav-link-underline');
       
       if (href === `#${current}`) {
         link.classList.add('active');
-        gsap.to(link, {
-          color: '#13C46B',
-          duration: 0.3,
-        });
+        gsap.to(link, { color: '#FFFFFF', duration: 0.3 });
+        if (underline) gsap.to(underline, { width: '100%', duration: 0.3 });
       } else {
         link.classList.remove('active');
-        gsap.to(link, {
-          color: 'rgba(255, 255, 255, 0.7)',
-          duration: 0.3,
-        });
+        gsap.to(link, { color: 'rgba(255, 255, 255, 0.7)', duration: 0.3 });
+        if (underline) gsap.to(underline, { width: '0%', duration: 0.3 });
       }
     });
   };
@@ -273,101 +261,69 @@ export const initScrollSpy = () => {
 
 /**
  * Mobile Menu Enhancement
- * Create mobile menu with premium animations if it exists
+ * Premium drawer animation
  */
 export const initMobileMenuEnhanced = () => {
   const mobileMenuBtn = document.querySelector('#mobile-menu-btn');
   const mobileMenu = document.querySelector('#mobile-menu');
-
-  if (!mobileMenuBtn || !mobileMenu) {
-    console.warn('[EnhancedNav] Mobile menu elements not found');
-    return;
-  }
+  
+  if (!mobileMenuBtn || !mobileMenu) return;
 
   let isMenuOpen = false;
-  const menuTimeline = gsap.timeline({ paused: true });
+  
+  // Set initial state
+  gsap.set(mobileMenu, { 
+    height: 0, 
+    opacity: 0,
+    display: 'none'
+  });
 
-  // Create menu animation
-  menuTimeline.to(mobileMenu, {
-    opacity: 1,
-    y: 0,
-    duration: 0.4,
-    ease: 'power2.out',
-  }, 0);
-
-  // Menu button click
-  mobileMenuBtn.addEventListener('click', () => {
+  const toggleMenu = () => {
     isMenuOpen = !isMenuOpen;
     
     if (isMenuOpen) {
-      mobileMenu.classList.remove('hidden');
-      menuTimeline.play();
-      document.body.classList.add('overflow-hidden');
+      mobileMenu.style.display = 'block';
+      gsap.to(mobileMenu, {
+        height: 'auto',
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power3.out',
+      });
+      
+      // Animate menu links staggered
+      gsap.fromTo(mobileMenu.querySelectorAll('a'), 
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: 'power2.out', delay: 0.2 }
+      );
+      
       mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      // Change icon to X (optional, but good for UX)
     } else {
-      menuTimeline.reverse();
-      setTimeout(() => {
-        mobileMenu.classList.add('hidden');
-      }, 400);
-      document.body.classList.remove('overflow-hidden');
+      gsap.to(mobileMenu, {
+        height: 0,
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power3.in',
+        onComplete: () => {
+          mobileMenu.style.display = 'none';
+        }
+      });
       mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
-  });
+  };
+
+  mobileMenuBtn.addEventListener('click', toggleMenu);
 
   // Close menu on link click
-  const menuLinks = mobileMenu.querySelectorAll('a');
-  menuLinks.forEach(link => {
+  mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      if (isMenuOpen) {
-        menuTimeline.reverse();
-        setTimeout(() => {
-          mobileMenu.classList.add('hidden');
-        }, 400);
-        document.body.classList.remove('overflow-hidden');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        isMenuOpen = false;
-      }
+      if (isMenuOpen) toggleMenu();
     });
-  });
-
-  // Close on escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isMenuOpen) {
-      menuTimeline.reverse();
-      setTimeout(() => {
-        mobileMenu.classList.add('hidden');
-      }, 400);
-      document.body.classList.remove('overflow-hidden');
-      mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      isMenuOpen = false;
-    }
-  });
-
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (
-      isMenuOpen &&
-      !mobileMenu.contains(e.target) &&
-      !mobileMenuBtn.contains(e.target)
-    ) {
-      menuTimeline.reverse();
-      setTimeout(() => {
-        mobileMenu.classList.add('hidden');
-      }, 400);
-      document.body.classList.remove('overflow-hidden');
-      mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      isMenuOpen = false;
-    }
   });
 };
 
-/**
- * Enhanced Navigation Export Object
- */
-export const enhancedNavigation = {
+export default {
   initEnhancedNavigation,
   initScrollSpy,
   initMobileMenuEnhanced,
 };
-
-export default enhancedNavigation;

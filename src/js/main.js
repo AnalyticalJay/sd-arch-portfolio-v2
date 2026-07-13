@@ -35,7 +35,6 @@ const initializeApp = () => {
     // Phase 2: Initialize enhanced navigation
     console.log('[Main] → Initializing enhanced navigation...');
     initEnhancedNavigation();
-    initScrollSpy();
 
     // Phase 3: Initialize page polish
     console.log('[Main] → Initializing page polish...');

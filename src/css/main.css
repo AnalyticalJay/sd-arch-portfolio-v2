@@ -246,8 +246,13 @@
   #main-header {
     @apply bg-transparent border-b border-transparent;
     &.header-scrolled {
-      @apply bg-navy/80 backdrop-blur-xl border-white/5 py-4;
+      @apply bg-navy/80 backdrop-blur-xl border-white/5;
     }
+  }
+
+  .nav-link-underline {
+    @apply absolute bottom-[-4px] left-0 h-[2px] bg-primary-green rounded-full;
+    width: 0%;
   }
 
   /* Section Styles */
