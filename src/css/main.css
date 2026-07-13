@@ -82,10 +82,30 @@
 @layer base {
   html {
     @apply antialiased;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     font-family: var(--font-secondary);
     color: var(--color-text-primary);
     background-color: var(--color-background);
+  }
+
+  html.lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
   }
 
   body {
@@ -298,9 +318,7 @@
    ANIMATIONS & UTILITIES
    ============================================================================ */
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
+/* Lenis smooth scroll overrides are now handled in the base section */
 
 [data-animation] {
   opacity: 0;
@@ -322,14 +340,7 @@
    PREMIUM ANIMATIONS & TRANSITIONS
    ============================================================================ */
 
-/* Smooth Scroll Behavior */
-html.lenis {
-  scroll-behavior: smooth;
-}
-
-html.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
+/* Smooth Scroll Behavior is handled in the base section */
 
 /* Reduce Motion Preferences */
 @media (prefers-reduced-motion: reduce) {

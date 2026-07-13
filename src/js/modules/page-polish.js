@@ -5,6 +5,7 @@
  */
 
 import gsap from 'gsap';
+import { scrollController } from './scroll-controller';
 
 /**
  * Initialize Page Polish
@@ -50,9 +51,9 @@ const initScrollProgressIndicator = () => {
       document.body.appendChild(progressBar);
     }
 
-    // Update progress on scroll
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
+    // Update progress on scroll using Lenis
+    scrollController.onScroll((e) => {
+      const scrollTop = e.scroll || window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = (scrollTop / docHeight) * 100;
 
@@ -61,7 +62,7 @@ const initScrollProgressIndicator = () => {
         duration: 0.1,
         ease: 'none',
       });
-    }, { passive: true });
+    });
 
     console.log('[PagePolish] ✓ Scroll progress indicator initialized');
   } catch (error) {
@@ -327,9 +328,10 @@ export const initScrollToTopButton = () => {
 
     document.body.appendChild(scrollToTopBtn);
 
-    // Show/hide button on scroll
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
+    // Show/hide button on scroll using Lenis
+    scrollController.onScroll((e) => {
+      const scrollY = e.scroll || window.scrollY;
+      if (scrollY > 300) {
         gsap.to(scrollToTopBtn, {
           display: 'flex',
           opacity: 1,
@@ -346,17 +348,13 @@ export const initScrollToTopButton = () => {
           },
         });
       }
-    }, { passive: true });
+    });
 
-    // Scroll to top on click
+    // Scroll to top on click using Lenis
     scrollToTopBtn.addEventListener('click', () => {
-      gsap.to(window, {
-        scrollTo: {
-          y: 0,
-          autoKill: false,
-        },
-        duration: 1,
-        ease: 'power2.out',
+      scrollController.scrollToTop({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
       });
     });
 

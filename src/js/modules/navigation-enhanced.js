@@ -5,7 +5,7 @@
  */
 
 import gsap from 'gsap';
-import { scrollToElement } from './scroll-enhanced';
+import { scrollController } from './scroll-controller';
 
 /**
  * Initialize Enhanced Navigation
@@ -49,11 +49,10 @@ export const initEnhancedNavigation = () => {
  */
 const initHeaderScrollEffectGSAP = (header, logo) => {
   let lastScrollY = 0;
-  let ticking = false;
   const scrollThreshold = 50;
 
-  const updateHeaderOnScroll = () => {
-    const scrollY = window.scrollY;
+  const updateHeaderOnScroll = (e) => {
+    const scrollY = e.scroll || window.scrollY;
     const isScrolled = scrollY > scrollThreshold;
     const wasScrolled = lastScrollY > scrollThreshold;
 
@@ -105,17 +104,9 @@ const initHeaderScrollEffectGSAP = (header, logo) => {
     }
 
     lastScrollY = scrollY;
-    ticking = false;
   };
 
-  const onScroll = () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateHeaderOnScroll);
-      ticking = true;
-    }
-  };
-
-  window.addEventListener('scroll', onScroll, { passive: true });
+  scrollController.onScroll(updateHeaderOnScroll);
 };
 
 /**
@@ -137,9 +128,10 @@ const initSmoothAnchorNavigation = () => {
         const headerHeight = document.querySelector('#main-header')?.offsetHeight || 80;
         const offset = headerHeight;
         
-        scrollToElement(target, offset, {
-          duration: 1.2,
-          ease: 'power4.inOut'
+        scrollController.scrollTo(target, {
+          offset: -offset,
+          duration: 1.5,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
         });
       }
     });
@@ -227,9 +219,9 @@ export const initScrollSpy = () => {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('nav:not(#mobile-menu) a[href^="#"]');
 
-  const handleScroll = () => {
+  const handleScroll = (e) => {
     let current = '';
-    const scrollPosition = window.scrollY + 150;
+    const scrollPosition = (e.scroll || window.scrollY) + 150;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
@@ -256,7 +248,7 @@ export const initScrollSpy = () => {
     });
   };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  scrollController.onScroll(handleScroll);
 };
 
 /**

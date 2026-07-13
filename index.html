@@ -86,7 +86,7 @@
 
     <main id="main-content">
         <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center pt-20 overflow-hidden" aria-label="Hero">
+        <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden" aria-label="Hero">
             <!-- Background Image -->
             <div class="absolute inset-0 z-0">
                 <div class="absolute inset-0 bg-navy/60 z-10"></div>
@@ -198,6 +198,37 @@
         </section>
 
         <!-- Solutions Section -->
+        <section id="about" class="section-padding bg-white border-b border-border">
+            <div class="container-custom">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div data-animation="fade-in-up">
+                        <h2 class="text-gradient-green uppercase tracking-widest text-xs font-bold mb-4">About OpenV Group</h2>
+                        <h3 class="text-3xl md:text-5xl font-manrope font-bold text-navy mb-8 leading-tight">Driving enterprise growth through <span class="text-primary-green">connected technology.</span></h3>
+                        <p class="text-body text-lg mb-8">We are a multi-disciplinary technology group dedicated to empowering businesses across South Africa. By combining cybersecurity, digital growth, and business software, we provide a unified ecosystem that solves complex challenges and fuels innovation.</p>
+                        <div class="flex flex-col sm:flex-row gap-8">
+                            <div>
+                                <span class="block text-2xl font-bold text-navy mb-1">20+ Years</span>
+                                <span class="text-xs font-bold tracking-widest text-body uppercase">Experience</span>
+                            </div>
+                            <div class="w-px h-12 bg-border hidden sm:block"></div>
+                            <div>
+                                <span class="block text-2xl font-bold text-navy mb-1">45+ Experts</span>
+                                <span class="text-xs font-bold tracking-widest text-body uppercase">Professionals</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative" data-animation="scale-in">
+                        <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="/assets/images/about-image.jpg" alt="OpenV Group Office" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 bg-primary-green p-10 rounded-2xl shadow-xl hidden md:block">
+                            <p class="text-navy font-bold text-xl leading-tight">Committed to<br>your success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="solutions" class="section-padding bg-white">
             <div class="container-custom">
                 <div class="section-header">
@@ -426,7 +457,7 @@
         </section>
 
         <!-- CTA Section -->
-        <section id="cta" class="relative py-32 bg-navy overflow-hidden">
+        <section id="consultation" class="relative py-32 bg-navy overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <img src="/assets/images/cta-bg.jpg" alt="" class="w-full h-full object-cover opacity-20">
             </div>
@@ -443,6 +474,68 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                             041 379 0550
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section id="contact" class="section-padding bg-light border-t border-border">
+            <div class="container-custom">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                    <div data-animation="fade-in-up">
+                        <h2 class="text-gradient-green uppercase tracking-widest text-xs font-bold mb-4">Get In Touch</h2>
+                        <h3 class="text-3xl md:text-5xl font-manrope font-bold text-navy mb-8 leading-tight">Let's start a <span class="text-primary-green">conversation.</span></h3>
+                        <p class="text-body text-lg mb-12">Whether you have a specific project in mind or just want to learn more about how we can help your business, our team is ready to connect.</p>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-6">
+                                <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#07111C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold tracking-widest text-body uppercase mb-1">Call Us</span>
+                                    <a href="tel:+27413790550" class="text-lg font-bold text-navy hover:text-primary-green transition-colors">041 379 0550</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6">
+                                <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#07111C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold tracking-widest text-body uppercase mb-1">Email Us</span>
+                                    <a href="mailto:info@openv.co.za" class="text-lg font-bold text-navy hover:text-primary-green transition-colors">info@openv.co.za</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-border" data-animation="fade-in-up" data-delay="0.2">
+                        <form action="#" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label for="name" class="text-xs font-bold tracking-widest text-navy uppercase">Full Name</label>
+                                    <input type="text" id="name" class="w-full bg-light border border-border rounded-lg px-4 py-3 text-navy focus:outline-none focus:border-primary-green transition-colors" placeholder="John Doe">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="email" class="text-xs font-bold tracking-widest text-navy uppercase">Email Address</label>
+                                    <input type="email" id="email" class="w-full bg-light border border-border rounded-lg px-4 py-3 text-navy focus:outline-none focus:border-primary-green transition-colors" placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="subject" class="text-xs font-bold tracking-widest text-navy uppercase">Subject</label>
+                                <select id="subject" class="w-full bg-light border border-border rounded-lg px-4 py-3 text-navy focus:outline-none focus:border-primary-green transition-colors">
+                                    <option value="">Select a service</option>
+                                    <option value="cybersecurity">Cybersecurity</option>
+                                    <option value="digital">Digital Growth</option>
+                                    <option value="software">Business Software</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="message" class="text-xs font-bold tracking-widest text-navy uppercase">Message</label>
+                                <textarea id="message" rows="4" class="w-full bg-light border border-border rounded-lg px-4 py-3 text-navy focus:outline-none focus:border-primary-green transition-colors" placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-full py-4 uppercase tracking-widest font-bold">Send Message</button>
+                        </form>
                     </div>
                 </div>
             </div>
