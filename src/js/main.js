@@ -1,51 +1,24 @@
 /**
  * Main Application Entry Point
- * Initializes all core modules and global animations
+ * Initializes all core modules and premium animations
+ * Premium Motion & User Experience - Phase 3
  */
 
 import '../css/main.css';
-import { initScroll, destroyScroll } from './modules/scroll';
-import { initNavigation } from './modules/navigation';
-import { animations, refreshScrollTriggers } from './modules/animations';
+import gsap from 'gsap';
 
-/**
- * Initialize Global Animations
- * Applies animations to elements with data-animation attributes
- */
-const initGlobalAnimations = () => {
-  try {
-    // Fade In animations
-    const fadeElements = document.querySelectorAll('[data-animation="fade-in"]');
-    fadeElements.forEach((el) => {
-      animations.fadeIn(el, {
-        delay: parseFloat(el.dataset.delay) || 0
-      });
-    });
+// Core modules
+import { initEnhancedScroll } from './modules/scroll-enhanced';
+import { initEnhancedNavigation, initScrollSpy } from './modules/navigation-enhanced';
 
-    // Fade In Up animations
-    const fadeUpElements = document.querySelectorAll('[data-animation="fade-in-up"]');
-    fadeUpElements.forEach((el) => {
-      animations.fadeInUp(el, {
-        delay: parseFloat(el.dataset.delay) || 0
-      });
-    });
-
-    // Stats Counter Animation
-    const statsNumbers = document.querySelectorAll('.text-3xl.font-manrope');
-    statsNumbers.forEach((stat) => {
-      const targetValue = parseInt(stat.textContent);
-      if (!isNaN(targetValue)) {
-        animations.animateCounter(stat, targetValue);
-      }
-    });
-
-    // Add Hover Effects to Premium Cards
-    animations.addHoverScale('.card-premium', 1.02);
-    
-  } catch (error) {
-    console.error('[Main] Error initializing global animations:', error);
-  }
-};
+// Premium animation modules
+import { initHeroAnimations, animateHeroStats, animateCtaButtonHover } from './modules/hero-animations';
+import { initSectionAnimations, addCardHoverEffects } from './modules/section-animations';
+import { initAdvancedScrollAnimations } from './modules/scroll-animations';
+import { initMicroInteractions, initInputFocusEffects } from './modules/micro-interactions';
+import { initPagePolish, createPreloader, addPageFadeTransition, initScrollToTopButton } from './modules/page-polish';
+import { initCursorEffects } from './modules/cursor-effects';
+import { initPerformanceOptimizations } from './modules/performance-optimization';
 
 /**
  * Initialize Application
@@ -53,21 +26,60 @@ const initGlobalAnimations = () => {
  */
 const initializeApp = () => {
   try {
-    // Initialize Smooth Scroll
-    const lenis = initScroll();
+    console.log('[Main] 🚀 Initializing OpenV Group Premium Experience...');
+
+    // Phase 1: Initialize core smooth scroll
+    console.log('[Main] → Initializing enhanced smooth scroll...');
+    const lenis = initEnhancedScroll();
+    if (!lenis) {
+      console.warn('[Main] ⚠️ Enhanced scroll initialization failed, continuing...');
+    }
+
+    // Phase 2: Initialize enhanced navigation
+    console.log('[Main] → Initializing enhanced navigation...');
+    initEnhancedNavigation();
+    initScrollSpy();
+
+    // Phase 3: Initialize page polish
+    console.log('[Main] → Initializing page polish...');
+    initPagePolish();
+    addPageFadeTransition();
+    initScrollToTopButton();
+
+    // Phase 4: Initialize hero animations
+    console.log('[Main] → Initializing hero section animations...');
+    initHeroAnimations();
+    animateHeroStats();
+    animateCtaButtonHover();
+
+    // Phase 5: Initialize advanced scroll animations
+    console.log('[Main] → Initializing advanced scroll animations...');
+    initAdvancedScrollAnimations();
     
-    // Initialize Navigation
-    initNavigation();
+    // Phase 5b: Initialize section animations
+    console.log('[Main] → Initializing section animations...');
+    initSectionAnimations();
+    addCardHoverEffects();
 
-    // Initialize Global Animations
-    initGlobalAnimations();
+    // Phase 6: Initialize micro-interactions
+    console.log('[Main] → Initializing micro-interactions...');
+    initMicroInteractions();
+    initInputFocusEffects();
 
-    // Refresh ScrollTriggers after all elements are initialized
-    refreshScrollTriggers();
+    // Phase 7: Initialize cursor effects
+    console.log('[Main] → Initializing cursor effects...');
+    initCursorEffects();
 
-    console.log('[Main] ✓ OpenV Group Production Ready');
+    // Phase 8: Initialize performance optimizations
+    console.log('[Main] → Initializing performance optimizations...');
+    initPerformanceOptimizations();
+
+    // Final: Log success
+    console.log('[Main] ✅ OpenV Group Premium Experience Ready');
+    console.log('[Main] 🎨 Premium Motion & User Experience - Phase 3 Complete');
+    console.log('[Main] 📊 All modules initialized and optimized for peak performance');
   } catch (error) {
-    console.error('[Main] Error during initialization:', error);
+    console.error('[Main] ❌ Error during initialization:', error);
   }
 };
 
@@ -76,19 +88,30 @@ const initializeApp = () => {
  */
 const cleanupOnUnload = () => {
   try {
-    destroyScroll();
-    animations.killAllAnimations();
+    console.log('[Main] 🧹 Cleaning up resources...');
+    // Kill all animations
+    gsap.killTweensOf('*');
+    // Cleanup will be handled by individual modules
   } catch (error) {
     console.error('[Main] Error during cleanup:', error);
   }
 };
 
+/**
+ * Wait for DOM to be ready
+ */
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
   initializeApp();
 }
 
+/**
+ * Cleanup on unload
+ */
 window.addEventListener('beforeunload', cleanupOnUnload);
 
+/**
+ * Export for external use
+ */
 export { initializeApp, cleanupOnUnload };
