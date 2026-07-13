@@ -3,7 +3,7 @@
  * Orchestrates the initialization and lifecycle of animations on a page.
  */
 
-import { scrollController } from './scroll-controller';
+import { scrollController } from './scroll-controller-accessible';
 import { animationFramework } from './animation-framework';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

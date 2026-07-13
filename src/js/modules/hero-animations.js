@@ -141,6 +141,12 @@ export const animateHeroStats = () => {
       const targetValue = parseInt(stat.textContent);
       
       if (!isNaN(targetValue)) {
+        // Skip counter animation for reduced motion
+        if (prefersReducedMotion()) {
+          stat.textContent = targetValue;
+          return;
+        }
+
         const counter = { value: 0 };
 
         gsap.to(counter, {
@@ -172,6 +178,7 @@ export const animateCtaButtonHover = () => {
     ctaButtons.forEach(button => {
       // Hover enter
       button.addEventListener('mouseenter', () => {
+        if (prefersReducedMotion()) return;
         gsap.to(button, {
           scale: 1.08,
           duration: 0.3,
@@ -243,11 +250,11 @@ export const animateVideoPlayButton = () => {
 
     // Hover effect
     playButton.addEventListener('mouseenter', () => {
-      playTimeline.play();
+      if (!prefersReducedMotion()) playTimeline.play();
     });
 
     playButton.addEventListener('mouseleave', () => {
-      playTimeline.reverse();
+      if (!prefersReducedMotion()) playTimeline.reverse();
     });
 
     console.log('[HeroAnimations] ✓ Video play button animation initialized');

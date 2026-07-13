@@ -18,10 +18,10 @@ import { initAccessibleNavigation, initScrollSpy } from './modules/navigation-ac
 import { initHeroAnimations, animateHeroStats, animateCtaButtonHover } from './modules/hero-animations';
 import { initSectionAnimations, addCardHoverEffects } from './modules/section-animations';
 import { initAdvancedScrollAnimations } from './modules/scroll-animations';
-import { initMicroInteractions, initInputFocusEffects } from './modules/micro-interactions';
+import { initAccessibleMicroInteractions } from './modules/micro-interactions-accessible';
 import { initAccessiblePagePolish, createAccessiblePreloader } from './modules/page-polish-accessible';
-import { initCursorEffects } from './modules/cursor-effects';
-import { initCardHoverEffects } from './modules/card-hover';
+import { initAccessibleCursorEffects } from './modules/cursor-effects-accessible';
+import { initAccessibleCardHoverEffects } from './modules/card-hover-accessible';
 import { initPartnerMarquee } from './modules/partner-marquee';
 
 /**
@@ -66,7 +66,7 @@ const initializeApp = () => {
     
     // Phase 5c: Initialize enhanced card hover effects
     console.log('[Main] → Initializing enhanced card hover effects...');
-    initCardHoverEffects();
+    initAccessibleCardHoverEffects();
     
     // Phase 5d: Initialize partner marquee
     console.log('[Main] → Initializing partner marquee...');
@@ -74,12 +74,11 @@ const initializeApp = () => {
 
     // Phase 6: Initialize micro-interactions
     console.log('[Main] → Initializing micro-interactions...');
-    initMicroInteractions();
-    initInputFocusEffects();
+    initAccessibleMicroInteractions();
 
     // Phase 7: Initialize cursor effects
     console.log('[Main] → Initializing cursor effects...');
-    initCursorEffects();
+    initAccessibleCursorEffects();
 
     // Final: Log success
     console.log('[Main] ✅ OpenV Group Premium Experience Ready');

@@ -33,7 +33,9 @@ const getDefaults = (options = {}) => {
  * Helper to create a ScrollTrigger object
  */
 const createScrollTrigger = (target, options = {}) => {
-  if (prefersReducedMotion()) return null;
+  // If user prefers reduced motion, we still want the element to be visible
+  // so we return a trigger that might just trigger the final state immediately
+  // or we handle it in the animation functions themselves.
   
   return {
     trigger: target,
@@ -46,13 +48,18 @@ const createScrollTrigger = (target, options = {}) => {
  * Fade Up Animation
  */
 export const fadeUp = (target, options = {}) => {
+  const isReduced = prefersReducedMotion();
   const config = getDefaults(options);
   const trigger = options.scrollTrigger !== false ? createScrollTrigger(target, options.scrollTrigger) : null;
+
+  if (isReduced) {
+    return gsap.set(target, { opacity: 1, y: 0 });
+  }
 
   return gsap.from(target, {
     ...config,
     opacity: 0,
-    y: prefersReducedMotion() ? 0 : (options.y || 30),
+    y: options.y || 30,
     scrollTrigger: trigger,
   });
 };
@@ -176,6 +183,8 @@ export const createTimeline = (options = {}) => {
  * Hover Animation
  */
 export const hover = (target, hoverProps = {}, leaveProps = {}) => {
+  if (prefersReducedMotion()) return;
+  
   const elements = typeof target === 'string' ? document.querySelectorAll(target) : [target];
   
   elements.forEach(el => {

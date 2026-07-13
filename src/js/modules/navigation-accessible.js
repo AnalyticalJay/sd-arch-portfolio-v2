@@ -413,20 +413,21 @@ export const initMobileMenuAccessible = () => {
 
     // Tab key management for focus trap
     if (e.key === 'Tab' && isMenuOpen) {
-      const menuItems = Array.from(mobileMenu.querySelectorAll('a, button'));
-      const focusedIndex = menuItems.indexOf(document.activeElement);
+      const menuItems = Array.from(mobileMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+      const firstFocusable = menuItems[0];
+      const lastFocusable = menuItems[menuItems.length - 1];
       
       if (e.shiftKey) {
         // Shift+Tab - move focus backward
-        if (focusedIndex <= 0) {
+        if (document.activeElement === firstFocusable || document.activeElement === mobileMenuBtn) {
           e.preventDefault();
-          menuItems[menuItems.length - 1].focus();
+          lastFocusable.focus();
         }
       } else {
         // Tab - move focus forward
-        if (focusedIndex >= menuItems.length - 1) {
+        if (document.activeElement === lastFocusable) {
           e.preventDefault();
-          menuItems[0].focus();
+          firstFocusable.focus();
         }
       }
     }
