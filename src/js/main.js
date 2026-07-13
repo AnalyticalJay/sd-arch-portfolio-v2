@@ -18,6 +18,7 @@ import { initAdvancedScrollAnimations } from './modules/scroll-animations';
 import { initMicroInteractions, initInputFocusEffects } from './modules/micro-interactions';
 import { initPagePolish, createPreloader, addPageFadeTransition, initScrollToTopButton } from './modules/page-polish';
 import { initCursorEffects } from './modules/cursor-effects';
+import { initCardHoverEffects } from './modules/card-hover';
 import { initPerformanceOptimizations } from './modules/performance-optimization';
 
 /**
@@ -56,6 +57,10 @@ const initializeApp = () => {
     console.log('[Main] → Initializing section animations...');
     initSectionAnimations();
     addCardHoverEffects();
+    
+    // Phase 5c: Initialize enhanced card hover effects
+    console.log('[Main] → Initializing enhanced card hover effects...');
+    initCardHoverEffects();
 
     // Phase 6: Initialize micro-interactions
     console.log('[Main] → Initializing micro-interactions...');

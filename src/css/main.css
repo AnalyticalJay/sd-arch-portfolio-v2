@@ -67,6 +67,12 @@
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
+  
+  /* Card Hover Effects */
+  --glow-opacity: 0;
+  --card-lift-distance: 16px;
+  --card-shadow-color: rgba(19, 196, 107, 0.2);
+  --card-border-color: rgba(19, 196, 107, 0.3);
 }
 
 /* ============================================================================
@@ -231,6 +237,21 @@
         @apply opacity-100;
       }
     }
+  }
+
+  /* Service Cards */
+  #solutions .bg-white.p-10 {
+    @apply relative overflow-hidden border border-transparent rounded-lg transition-all duration-300 cursor-pointer;
+  }
+  
+  /* Partner Cards */
+  #partners .bg-white.p-6 {
+    @apply relative overflow-hidden border border-transparent rounded-lg transition-all duration-300 cursor-pointer;
+  }
+  
+  /* Industry Cards */
+  #industries .text-center.group {
+    @apply relative overflow-hidden rounded-lg transition-all duration-300 cursor-pointer;
   }
 
   /* Badges & Pills */
@@ -568,10 +589,14 @@ svg {
 .btn,
 a,
 svg,
-[data-animation] {
+[data-animation],
+#solutions .bg-white.p-10,
+#partners .bg-white.p-6,
+#industries .text-center.group {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
+  will-change: transform;
 }
 
 /* Focus Visible Styles */
