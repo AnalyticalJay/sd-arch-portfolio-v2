@@ -338,6 +338,19 @@
     }
   }
 
+  /* Brand Card Specific Glows */
+  #companies .card-premium:nth-child(1):hover {
+    box-shadow: 0 0 30px rgba(19, 196, 107, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  #companies .card-premium:nth-child(2):hover {
+    box-shadow: 0 0 30px rgba(27, 142, 255, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  #companies .card-premium:nth-child(3):hover {
+    box-shadow: 0 0 30px rgba(19, 196, 107, 0.4), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
   /* Service Cards */
   #solutions .bg-white.p-10 {
     @apply relative overflow-hidden border border-transparent rounded-lg transition-all duration-300 cursor-pointer;
@@ -384,6 +397,11 @@
     @apply mb-20 text-center max-w-3xl mx-auto;
     & h2 { @apply mb-6; }
     & p { @apply text-white/50 text-lg; }
+  }
+
+  /* White background section headers */
+  .bg-white .section-header {
+    & p { @apply text-body; }
   }
 
   /* Gradient Text */
@@ -504,6 +522,18 @@ body {
   }
 }
 
+/* Fade In Up Smooth Animation */
+@keyframes fadeInUpSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Fade In Down Animation */
 @keyframes fadeInDown {
   from {
@@ -544,7 +574,19 @@ body {
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scale In Smooth Animation */
+@keyframes scaleInSmooth {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
   }
   to {
     opacity: 1;
@@ -587,7 +629,7 @@ body {
 
 /* Button Hover Effects */
 .btn {
-  transition: all var(--transition-base);
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
   overflow: hidden;
 }
@@ -600,7 +642,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.1);
-  transition: left var(--transition-base);
+  transition: left 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: -1;
 }
 
@@ -610,12 +652,12 @@ body {
 
 /* Card Hover Effects */
 .card-premium {
-  transition: all var(--transition-base);
+  transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Link Hover Effects */
 a {
-  transition: color var(--transition-base);
+  transition: color 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 a:hover {
@@ -624,17 +666,17 @@ a:hover {
 
 /* Badge Animations */
 .badge {
-  transition: all var(--transition-base);
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Icon Animations */
 svg {
-  transition: all var(--transition-base);
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Header Animations */
 #main-header {
-  transition: all var(--transition-base);
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Section Header Animations */
@@ -652,7 +694,7 @@ svg {
 }
 
 [data-animation="fade-in-up"] {
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 [data-animation="fade-in-down"] {
@@ -668,7 +710,7 @@ svg {
 }
 
 [data-animation="scale-in"] {
-  animation: scaleIn 0.8s ease-out forwards;
+  animation: scaleInSmooth 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* Stagger Animation Delays */
