@@ -5,6 +5,7 @@
  */
 
 import gsap from 'gsap';
+import { prefersReducedMotion } from './performance-optimization-v2';
 
 /**
  * Initialize Partner Marquee
@@ -15,6 +16,12 @@ export const initPartnerMarquee = () => {
     const marqueeContent = document.querySelector('.partner-marquee-content');
     
     if (!marqueeContainer || !marqueeContent) return;
+
+    // Skip marquee animation if user prefers reduced motion
+    if (prefersReducedMotion()) {
+      console.log('[PartnerMarquee] ✓ Marquee animation skipped (reduced motion)');
+      return;
+    }
 
     // Duplicate content for seamless loop
     // Clear any existing clones first (in case of re-init)

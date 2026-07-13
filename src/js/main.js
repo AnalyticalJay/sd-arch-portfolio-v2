@@ -1,26 +1,28 @@
 /**
  * Main Application Entry Point
  * Initializes all core modules and premium animations
- * Premium Motion & User Experience - Phase 3
+ * Accessible Motion & User Experience - Phase 3
  */
 
 import '../css/main.css';
 import gsap from 'gsap';
 
+// Performance & Accessibility (must be first)
+import { initPerformanceOptimizations } from './modules/performance-optimization-v2';
+
 // Core modules
 import { pageAnimationController } from './modules/page-animation-controller';
-import { initEnhancedNavigation, initScrollSpy } from './modules/navigation-enhanced';
+import { initAccessibleNavigation, initScrollSpy } from './modules/navigation-accessible';
 
 // Premium animation modules
 import { initHeroAnimations, animateHeroStats, animateCtaButtonHover } from './modules/hero-animations';
 import { initSectionAnimations, addCardHoverEffects } from './modules/section-animations';
 import { initAdvancedScrollAnimations } from './modules/scroll-animations';
 import { initMicroInteractions, initInputFocusEffects } from './modules/micro-interactions';
-import { initPagePolish, createPreloader, addPageFadeTransition, initScrollToTopButton } from './modules/page-polish';
+import { initAccessiblePagePolish, createAccessiblePreloader } from './modules/page-polish-accessible';
 import { initCursorEffects } from './modules/cursor-effects';
 import { initCardHoverEffects } from './modules/card-hover';
 import { initPartnerMarquee } from './modules/partner-marquee';
-import { initPerformanceOptimizations } from './modules/performance-optimization';
 
 /**
  * Initialize Application
@@ -30,19 +32,22 @@ const initializeApp = () => {
   try {
     console.log('[Main] 🚀 Initializing OpenV Group Premium Experience...');
 
+    // Phase 0: Initialize performance & accessibility (MUST BE FIRST)
+    console.log('[Main] → Initializing performance & accessibility optimizations...');
+    initPerformanceOptimizations();
+
     // Phase 1: Initialize Animation Framework & Smooth Scroll
     console.log('[Main] → Initializing animation framework...');
     pageAnimationController.init();
 
-    // Phase 2: Initialize enhanced navigation
-    console.log('[Main] → Initializing enhanced navigation...');
-    initEnhancedNavigation();
+    // Phase 2: Initialize accessible navigation
+    console.log('[Main] → Initializing accessible navigation...');
+    initAccessibleNavigation();
 
-    // Phase 3: Initialize page polish
-    console.log('[Main] → Initializing page polish...');
-    initPagePolish();
-    addPageFadeTransition();
-    initScrollToTopButton();
+    // Phase 3: Initialize accessible page polish
+    console.log('[Main] → Initializing accessible page polish...');
+    initAccessiblePagePolish();
+    createAccessiblePreloader();
 
     // Phase 4: Initialize hero animations
     console.log('[Main] → Initializing hero section animations...');
@@ -76,14 +81,10 @@ const initializeApp = () => {
     console.log('[Main] → Initializing cursor effects...');
     initCursorEffects();
 
-    // Phase 8: Initialize performance optimizations
-    console.log('[Main] → Initializing performance optimizations...');
-    initPerformanceOptimizations();
-
     // Final: Log success
     console.log('[Main] ✅ OpenV Group Premium Experience Ready');
-    console.log('[Main] 🎨 Premium Motion & User Experience - Phase 4 Complete');
-    console.log('[Main] 📊 All modules initialized and optimized for peak performance');
+    console.log('[Main] 🎨 Accessible Motion & User Experience - Phase 3 Complete');
+    console.log('[Main] 📊 All modules initialized with accessibility & performance optimizations');
   } catch (error) {
     console.error('[Main] ❌ Error during initialization:', error);
   }

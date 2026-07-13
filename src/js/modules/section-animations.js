@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { animationFramework } from './animation-framework';
 import { AnimationConfig } from './animation-config';
+import { prefersReducedMotion } from './performance-optimization-v2';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,12 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export const initSectionAnimations = () => {
   try {
+    // Skip all animations if user prefers reduced motion
+    if (prefersReducedMotion()) {
+      console.log('[SectionAnimations] ✓ Section animations skipped (reduced motion)');
+      return;
+    }
+
     // Statistics section (Stats bar in Hero)
     animateStatsBar();
 

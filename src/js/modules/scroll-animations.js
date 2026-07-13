@@ -6,6 +6,7 @@
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { prefersReducedMotion } from './performance-optimization-v2';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,12 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export const initAdvancedScrollAnimations = () => {
   try {
+    // Skip animations if user prefers reduced motion
+    if (prefersReducedMotion()) {
+      console.log('[ScrollAnimations] ✓ Scroll animations skipped (reduced motion)');
+      return;
+    }
+
     // Batch animations for better performance
     gsap.utils.toArray('[data-animation]').forEach((element) => {
       const animationType = element.dataset.animation;

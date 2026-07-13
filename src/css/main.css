@@ -24,7 +24,7 @@
   --color-text-primary: var(--color-white);
   --color-text-secondary: var(--color-body-text);
   --color-text-muted: rgba(255, 255, 255, 0.6);
-  --color-text-light: rgba(255, 255, 255, 0.4);
+  --color-text-light: rgba(255, 255, 255, 0.5); /* Increased from 0.4 for WCAG AA (4.2:1 ratio) */
   
   /* Spacing System - 8pt Grid */
   --spacing-unit: 8px;
@@ -141,6 +141,10 @@
     &:hover {
       color: var(--color-primary-green);
     }
+
+    &:focus-visible {
+      @apply outline-2 outline-offset-2 outline-primary-green rounded;
+    }
   }
 
   /* Lists */
@@ -171,6 +175,14 @@
     clip: auto;
     white-space: normal;
   }
+
+  /* Form Input Focus States */
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-primary-green);
+    outline-offset: 2px;
+  }
 }
 
 /* ============================================================================
@@ -197,7 +209,7 @@
     }
 
     &:focus-visible {
-      @apply outline-2 outline-offset-2;
+      @apply outline-2 outline-offset-2 outline-primary-green;
     }
   }
 
@@ -347,10 +359,45 @@
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 0ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Disable animations entirely for reduced motion users */
+  [data-animation] {
+    animation: none !important;
+  }
+
+  /* Disable smooth scroll */
+  html.lenis {
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable transitions on all elements */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    transition: none !important;
+  }
+
+  /* Disable hover animations */
+  .card-premium:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Disable page transitions */
+  body {
+    animation: none !important;
   }
 }
 

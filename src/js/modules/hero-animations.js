@@ -6,6 +6,7 @@
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { prefersReducedMotion, getAnimationDuration } from './performance-optimization-v2';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,12 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export const initHeroAnimations = () => {
   try {
+    // Skip animations if user prefers reduced motion
+    if (prefersReducedMotion()) {
+      console.log('[HeroAnimations] ✓ Hero animations skipped (reduced motion)');
+      return;
+    }
+
     // Create master timeline for hero animations
     const heroTimeline = gsap.timeline({
       delay: 0.2,
@@ -63,9 +70,9 @@ export const initHeroAnimations = () => {
 
     // Stats bar animation is now handled by section-animations.js for scroll trigger consistency
 
-    // Background parallax on scroll
+    // Background parallax on scroll (skip for reduced motion)
     const heroBg = document.querySelector('.absolute.inset-0 img');
-    if (heroBg) {
+    if (heroBg && !prefersReducedMotion()) {
       animateHeroBackgroundParallax(heroBg);
     }
 
