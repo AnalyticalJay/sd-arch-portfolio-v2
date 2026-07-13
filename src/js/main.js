@@ -8,7 +8,7 @@ import '../css/main.css';
 import gsap from 'gsap';
 
 // Core modules
-import { initEnhancedScroll } from './modules/scroll-enhanced';
+import { pageAnimationController } from './modules/page-animation-controller';
 import { initEnhancedNavigation, initScrollSpy } from './modules/navigation-enhanced';
 
 // Premium animation modules
@@ -28,12 +28,9 @@ const initializeApp = () => {
   try {
     console.log('[Main] 🚀 Initializing OpenV Group Premium Experience...');
 
-    // Phase 1: Initialize core smooth scroll
-    console.log('[Main] → Initializing enhanced smooth scroll...');
-    const lenis = initEnhancedScroll();
-    if (!lenis) {
-      console.warn('[Main] ⚠️ Enhanced scroll initialization failed, continuing...');
-    }
+    // Phase 1: Initialize Animation Framework & Smooth Scroll
+    console.log('[Main] → Initializing animation framework...');
+    pageAnimationController.init();
 
     // Phase 2: Initialize enhanced navigation
     console.log('[Main] → Initializing enhanced navigation...');
@@ -76,7 +73,7 @@ const initializeApp = () => {
 
     // Final: Log success
     console.log('[Main] ✅ OpenV Group Premium Experience Ready');
-    console.log('[Main] 🎨 Premium Motion & User Experience - Phase 3 Complete');
+    console.log('[Main] 🎨 Premium Motion & User Experience - Phase 4 Complete');
     console.log('[Main] 📊 All modules initialized and optimized for peak performance');
   } catch (error) {
     console.error('[Main] ❌ Error during initialization:', error);
